@@ -6,7 +6,7 @@
 
 **What FloorCheck does:** an always-on Agent37 agent visits every dealer's public inventory every night. It reads every listing in its own browser and writes `listings.json` on its own computer. FloorCheck then pulls the file back and matches every financed serial number deterministically. It flags units sold out of trust, missing or sale-pending, each with evidence: the listing as published, its URL, a timestamp and a field-by-field ledger match. It prices recovery value from live marketplace comps through Monid, drafts payoff demands and the credit memo, and schedules itself to run nightly at 2 AM.
 
-**Result (real recorded run):** 3 dealers and 47 listings audited in **46 seconds with 9 agent tool calls**. It found $262,400 sold out of trust, $291,500 not found and one sale pending. For the sold Bobcat T66, 7 live comps put recovery at about $42.5K against a $71.4K advance.
+**Result (real recorded run):** 3 farm equipment dealers and 47 listings audited in **40 seconds with 10 agent tool calls**. It found $262,400 sold out of trust, $291,500 not found and one sale pending. For the sold Bobcat T66, 7 live comps put recovery at about $42.5K against a $71.4K advance.
 
 **Sponsor integrations:**
 - **Agent37 Cloud APIs:** a Hermes instance as the auditor, streamed `/v1/responses` with every tool call shown live, browser tools, the Files API to read back `listings.json`, `exec` and a public port to host the test dealer sites, and a **cron** for the nightly audit.

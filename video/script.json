@@ -76,7 +76,7 @@
     },
     {
       "id": "book",
-      "text": "Here's a lender's floor-plan book: forty-two financed units across three dealers, four point six million dollars outstanding.",
+      "text": "Here's a lender's floor-plan book: forty-two tractors and farm machines across three dealers, four point six million dollars outstanding.",
       "actions": [
         {
           "type": "goto",
@@ -99,7 +99,7 @@
     },
     {
       "id": "run",
-      "text": "One click hands the audit to an always-on agent with its own computer on Agent37. It opens each dealer's inventory page in its own browser, reads every listing, and writes what it found to a file on its machine. This is a recording of a real run: forty-six seconds, nine tool calls.",
+      "text": "One click hands the audit to an always-on agent with its own computer on Agent37. It opens each dealer's inventory page in its own browser, reads every listing, and writes what it found to a file on its machine. This is a recording of a real run: forty seconds, ten tool calls.",
       "actions": [
         {
           "type": "click",

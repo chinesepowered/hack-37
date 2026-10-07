@@ -302,7 +302,7 @@ const THEMES = {
     },
     logo: '<svg viewBox="0 0 64 64" width="66" height="66" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#2f6b2a" stroke="#f3c316" stroke-width="3"/><circle cx="32" cy="34" r="11" fill="#f3c316"/><path d="M5 36H59V42Q32 34 5 42Z" fill="#2f6b2a"/><path d="M5 40Q32 32 59 40V48Q32 40 5 48Z" fill="#8cc152"/><path d="M8 48Q32 40 56 48L52 54Q32 47 12 54Z" fill="#6ea83c"/><path d="M14 56Q32 50 50 56L44 60Q32 56 20 60Z" fill="#8cc152"/></svg>',
     promo: '&#9733; <b>0% financing for 48 months</b> on select new compact &amp; utility tractors. Ask about our fall harvest specials! &#9733;',
-    intro: 'Browse our current new and used inventory below. All new units come with full factory warranty and PDI by our certified techs. Don\'t see what you need? Give us a call &mdash; we can locate it.',
+    intro: 'Browse our current new and used inventory below. All new units come with full factory warranty and PDI by our certified techs. Don\'t see what you need? Give us a call. we can locate it.',
     footerExtra: 'Authorized dealer for John Deere, Kubota, New Holland, Case IH, Massey Ferguson &amp; Mahindra. Prices plus tax, freight &amp; setup. Subject to prior sale.',
     css: `
 body{background:#e9e4d2;font:13px/1.5 Verdana,"DejaVu Sans",Geneva,sans-serif;color:#2b2b2b}
@@ -350,12 +350,12 @@ footer h4{color:#f3c316;font-family:Georgia,"Bitstream Charter",serif}
     },
     logo: '<svg viewBox="0 0 64 64" width="62" height="62" aria-hidden="true"><path d="M32 2L59 17.5V46.5L32 62L5 46.5V17.5Z" fill="#f47b20"/><path d="M32 7L54.5 20V44L32 57L9.5 44V20Z" fill="none" stroke="#1d1d1d" stroke-width="2"/><path d="M19 17H45V25H36.5V39H45V47H19V39H27.5V25H19Z" fill="#1d1d1d"/></svg>',
     promo: '<b>FINANCING AVAILABLE O.A.C.</b> &nbsp;|&nbsp; TRADES WELCOME &nbsp;|&nbsp; WE BUY USED IRON &nbsp;|&nbsp; DELIVERY ACROSS NORTHERN NEVADA',
-    intro: 'New and used construction equipment in stock and ready to work. Every used machine goes through our 120-point shop inspection. Call our sales desk for availability, freight and attachment packages.',
+    intro: 'New and used farm and ranch tractors in stock and ready to work. Every used machine goes through our 120-point shop inspection. Call our sales desk for availability, freight and implement packages.',
     footerExtra: 'All prices USD, FOB Sparks NV. Prices, specifications and availability subject to change without notice. Equipment subject to prior sale.',
     sidebar: `<aside class="side">
   <div class="box"><h3>Why Ironline?</h3><ul><li>Family owned since 1994</li><li>Factory-trained technicians</li><li>Field service trucks</li><li>Parts counter open 6 days</li></ul></div>
-  <div class="box dark"><h3>Need Financing?</h3><p>Competitive rates for contractors. Fast credit decisions, 0 down O.A.C.</p><a class="btn" href="#">Apply Online</a></div>
-  <div class="box"><h3>Sell Your Iron</h3><p>We pay cash for clean late-model excavators, loaders and backhoes.</p><a class="btn alt" href="#">Get an Offer</a></div>
+  <div class="box dark"><h3>Need Financing?</h3><p>Competitive rates for farmers and ranchers. Fast credit decisions, 0 down O.A.C.</p><a class="btn" href="#">Apply Online</a></div>
+  <div class="box"><h3>Sell Your Iron</h3><p>We pay cash for clean late-model tractors, loaders and hay tools.</p><a class="btn alt" href="#">Get an Offer</a></div>
 </aside>`,
     css: `
 body{background:#d7d8d9;font:14px/1.45 Arial,"Liberation Sans",Helvetica,sans-serif;color:#222}
@@ -410,9 +410,9 @@ footer h4{color:#f47b20;text-transform:uppercase;letter-spacing:1px}
       scene: '<path d="M0 124V112Q30 104 60 112T120 110T180 108T240 110V124Z" fill="#bfe1e3" opacity=".85"/><path d="M0 108Q40 92 86 102Q120 88 160 98Q200 86 240 96V112Q180 104 120 110Q60 104 0 114Z" fill="#d7e9ea"/>',
     },
     logo: '<svg viewBox="0 0 64 64" width="62" height="62" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#18a7a0"/><circle cx="32" cy="32" r="26" fill="none" stroke="#fff" stroke-width="1.5" opacity=".6"/><path d="M19 15H33Q43 15 43 23Q43 28 38 30Q45 32 45 39Q45 47 35 47H19Z" fill="#0b2a4a"/><path d="M25 21V28H32Q36 28 36 24.5Q36 21 32 21ZM25 33V41H33Q38 41 38 37Q38 33 33 33Z" fill="#18a7a0"/><path d="M8 47Q16 42 24 47T40 47T56 47V52Q48 47 40 52T24 52T8 52Z" fill="#fff"/></svg>',
-    promo: 'Rent it. Buy it. Rent-to-own on select units &mdash; <b>Delivery throughout the Delta &amp; Bay Area.</b>',
-    intro: 'Compact equipment, telehandlers and aerial lifts for contractors, landscapers and rental customers. Ask about rental rates, rent-to-own and certified ex-rental fleet units.',
-    footerExtra: 'Prices exclude tax, delivery and doc fees. Rental fleet units sold as-is with inspection report. Bayshore Machinery is an independent dealer.',
+    promo: 'Harvest-season rentals. Rent-to-own on select units. <b>Delivery throughout the Delta &amp; Central Valley.</b>',
+    intro: 'Narrow and low-profile tractors, telehandlers and utility vehicles for orchards, vineyards and specialty crops. Ask about harvest-season rentals and certified ex-rental fleet units.',
+    footerExtra: 'Prices exclude tax, delivery and doc fees. Rental fleet units sold as-is with inspection report. Bayshore Ag &amp; Orchard is an independent dealer.',
     css: `
 body{background:#e6eef2;font:14px/1.5 "Trebuchet MS",Carlito,Tahoma,"DejaVu Sans",sans-serif;color:#1d2b38}
 .topbar{background:#08203a;color:#9fc3d6;font-size:12px}
@@ -525,7 +525,7 @@ function renderCard(u, theme) {
     priceHtml = `<div class="price sold">${esc(u.sold_label || 'SOLD')}</div><div class="finance-note">This unit has been sold. Call us for similar units.</div>`;
   } else {
     priceHtml =
-      (status === 'SALE_PENDING' ? `<div class="pending-note">Sale pending &mdash; backup offers welcome</div>` : '') +
+      (status === 'SALE_PENDING' ? `<div class="pending-note">Sale pending. Backup offers welcome.</div>` : '') +
       `<div class="price">${money(u.price)}</div>` +
       `<div class="finance-note">${u.condition === 'New' ? 'Financing available O.A.C.' : 'Call for quote &amp; trade-in value'}</div>`;
   }
@@ -583,7 +583,7 @@ ${theme.css.includes('.hazard') ? '<div class="hazard"></div>' : ''}
 <p class="intro">${theme.intro}</p>
 ${filters}
 ${content}
-<div class="cta"><b>Financing available.</b> Flexible terms for farms, contractors and small businesses &mdash; call ${esc(site.phone)} or stop by ${esc(site.address)}.</div>
+<div class="cta"><b>Financing available.</b> Flexible terms for farms, contractors and small businesses. Call ${esc(site.phone)} or stop by ${esc(site.address)}.</div>
 </main>
 <footer><div class="wrap">
 <div class="cols">

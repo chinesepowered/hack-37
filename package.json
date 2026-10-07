@@ -8,8 +8,7 @@
     "start": "node server.js",
     "dev": "node --watch server.js",
     "build:sites": "node scripts/build-dealer-sites.mjs",
-    "build:evidence": "node scripts/capture-evidence.mjs",
-    "setup:agent37": "node scripts/setup-agent37.mjs"
+    "build:evidence": "node scripts/capture-evidence.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -18,5 +17,8 @@
   "dependencies": {
     "express": "^4.21.2",
     "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
   }
 }
