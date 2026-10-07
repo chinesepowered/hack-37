@@ -1,186 +1,186 @@
 1
-00:00:00,000 --> 00:00:03,944
+00:00:00,000 --> 00:00:04,133
 Meet FloorCheck: the AI floor-plan
 auditor for equipment lenders.
 
 2
-00:00:04,844 --> 00:00:07,818
+00:00:05,045 --> 00:00:07,813
 When a dealer sells a
 tractor the lender paid for,
 
 3
-00:00:07,818 --> 00:00:10,554
+00:00:07,813 --> 00:00:10,359
 and keeps the money,
 that's called sold out of
 
 4
-00:00:10,554 --> 00:00:10,910
+00:00:10,359 --> 00:00:10,691
 trust.
 
 5
-00:00:10,910 --> 00:00:12,873
+00:00:10,691 --> 00:00:12,518
 It's the classic floor-plan loss.
 
 6
-00:00:12,873 --> 00:00:15,312
+00:00:12,518 --> 00:00:14,787
 And lenders usually find out weeks later,
 
 7
-00:00:15,312 --> 00:00:17,572
+00:00:14,787 --> 00:00:16,891
 from an auditor walking the lot with a
 
 8
-00:00:17,572 --> 00:00:18,166
+00:00:16,891 --> 00:00:17,444
 clipboard.
 
 9
-00:00:18,566 --> 00:00:22,501
+00:00:17,844 --> 00:00:21,150
 Here's a lender's floor-plan
-book: forty-two financed units
+book: forty-two tractors and farm
 
 10
-00:00:22,501 --> 00:00:25,968
-across three dealers, four
-point six million dollars
+00:00:21,150 --> 00:00:24,402
+machines across three dealers,
+four point six million dollars
 
 11
-00:00:25,968 --> 00:00:26,768
+00:00:24,402 --> 00:00:25,042
 outstanding.
 
 12
-00:00:27,068 --> 00:00:32,396
+00:00:25,347 --> 00:00:30,790
 One click hands the audit to an always-on
 agent with its own computer on Agent37.
 
 13
-00:00:32,396 --> 00:00:36,540
+00:00:30,790 --> 00:00:35,023
 It opens each dealer's inventory
 page in its own browser, reads
 
 14
-00:00:36,540 --> 00:00:40,223
+00:00:35,023 --> 00:00:38,786
 every listing, and writes what
 it found to a file on its
 
 15
-00:00:40,223 --> 00:00:40,749
+00:00:38,786 --> 00:00:39,323
 machine.
 
 16
-00:00:40,749 --> 00:00:45,354
+00:00:39,323 --> 00:00:43,691
 This is a recording of a real run:
-forty-six seconds, nine tool calls.
+forty seconds, ten tool calls.
 
 17
-00:00:45,553 --> 00:00:49,864
+00:00:43,890 --> 00:00:48,176
 FloorCheck pulls that file back and
 matches every financed serial number.
 
 18
-00:00:49,864 --> 00:00:52,344
+00:00:48,176 --> 00:00:50,642
 Thirty-five units are verified on the lot.
 
 19
-00:00:52,344 --> 00:00:55,592
+00:00:50,642 --> 00:00:53,871
 But three are listed as sold
 while the advance is still
 
 20
-00:00:55,592 --> 00:00:59,077
+00:00:53,871 --> 00:00:57,335
 unpaid: two hundred sixty-two
 thousand dollars, sold out of
 
 21
-00:00:59,077 --> 00:00:59,431
+00:00:57,335 --> 00:00:57,688
 trust.
 
 22
-00:00:59,431 --> 00:01:02,089
+00:00:57,688 --> 00:01:00,330
 Plus three units that
 aren't listed anywhere.
 
 23
-00:01:02,389 --> 00:01:06,563
+00:01:00,636 --> 00:01:04,940
 Every exception is defensible:
 the listing exactly as the dealer
 
 24
-00:01:06,563 --> 00:01:11,128
+00:01:04,940 --> 00:01:09,649
 published it, the URL, a timestamp,
 and a field-by-field match against
 
 25
-00:01:11,128 --> 00:01:11,845
+00:01:09,649 --> 00:01:10,388
 the ledger.
 
 26
-00:01:12,146 --> 00:01:15,814
+00:01:10,691 --> 00:01:14,426
 And Monid pulls live market comps
 for that exact model, so the
 
 27
-00:01:15,814 --> 00:01:19,364
+00:01:14,426 --> 00:01:18,041
 lender knows what it would
 actually recover: about forty-two
 
 28
-00:01:19,364 --> 00:01:22,618
+00:01:18,041 --> 00:01:21,355
 thousand dollars, against a
 seventy-one thousand dollar
 
 29
-00:01:22,618 --> 00:01:23,091
+00:01:21,355 --> 00:01:21,837
 advance.
 
 30
-00:01:23,491 --> 00:01:26,980
+00:01:22,244 --> 00:01:25,631
 For everything still on the lot,
 FloorCheck estimates what the
 
 31
-00:01:26,980 --> 00:01:30,582
+00:01:25,631 --> 00:01:29,128
 collateral is worth today, so the
 lender sees coverage, not just
 
 32
-00:01:30,582 --> 00:01:31,145
+00:01:29,128 --> 00:01:29,674
 existence.
 
 33
-00:01:31,445 --> 00:01:35,389
+00:01:29,981 --> 00:01:34,114
 It drafts a payoff demand to each dealer,
 and the memo for the credit committee.
 
 34
-00:01:37,601 --> 00:01:41,859
+00:01:36,291 --> 00:01:41,167
 And it schedules itself on Agent37,
 to run every night at 2 AM.
 
 35
-00:01:43,258 --> 00:01:48,512
+00:01:42,571 --> 00:01:48,322
 Under the hood: Agent37 runs the agent,
 its computer, and its nightly schedule.
 
 36
-00:01:48,512 --> 00:01:51,571
+00:01:48,322 --> 00:01:51,671
 Monid finds and runs the
 market-data scrapers.
 
 37
-00:01:51,571 --> 00:01:55,562
+00:01:51,671 --> 00:01:56,039
 And InstaCloud hosts the app,
 with its Postgres audit trail.
 
 38
-00:01:55,862 --> 00:01:58,771
+00:01:56,340 --> 00:01:59,236
 FloorCheck walks every
 lot, every night, in under
 
 39
-00:01:58,771 --> 00:02:01,502
+00:01:59,236 --> 00:02:01,955
 a minute, instead of an
 auditor driving lot to
 
 40
-00:02:01,502 --> 00:02:01,740
+00:02:01,955 --> 00:02:02,191
 lot.
