@@ -1,0 +1,119 @@
+{
+  "baseUrl": "http://localhost:8080",
+  "viewport": { "width": 1920, "height": 1080 },
+  "fps": 30,
+  "cursor": { "x": 1500, "y": 760, "visible": false },
+  "voice": {
+    "preferNames": ["Jessica", "Laura", "Sarah", "Aria", "Lily"],
+    "model": "eleven_multilingual_v2",
+    "stability": 0.42,
+    "similarity_boost": 0.8,
+    "style": 0.3,
+    "speed": 1.04
+  },
+  "setup": [
+    { "type": "goto", "url": "/video/intro.html" }
+  ],
+  "segments": [
+    {
+      "id": "intro",
+      "text": "Meet FloorCheck: the AI floor-plan auditor for equipment lenders.",
+      "actions": [
+        { "type": "goto", "url": "/video/intro.html" },
+        { "type": "cursor", "visible": false }
+      ],
+      "padAfterMs": 900
+    },
+    {
+      "id": "problem",
+      "text": "When a dealer sells a tractor the lender paid for, and keeps the money, that's called sold out of trust. It's the classic floor-plan loss. And lenders usually find out weeks later, from an auditor walking the lot with a clipboard.",
+      "actions": [
+        { "type": "goto", "url": "/dealers/valley-ag/" },
+        { "type": "scrollTo", "selector": "#unit-KBM7172PRE5531086", "block": "center" },
+        { "type": "cursor", "visible": true, "x": 1500, "y": 820 },
+        { "type": "move", "selector": "#unit-KBM7172PRE5531086", "atMs": 2600, "moveMs": 1100 }
+      ],
+      "padAfterMs": 400
+    },
+    {
+      "id": "book",
+      "text": "Here's a lender's floor-plan book: forty-two financed units across three dealers, four point six million dollars outstanding.",
+      "actions": [
+        { "type": "goto", "url": "/?mode=replay&replay_ms=17000" },
+        { "type": "move", "selector": "#kpi-exposure", "atMs": 600, "moveMs": 900 },
+        { "type": "move", "selector": ".dealer-card[data-dealer='ironline']", "atMs": 3600, "moveMs": 900 }
+      ],
+      "padAfterMs": 300
+    },
+    {
+      "id": "run",
+      "text": "One click hands the audit to an always-on agent with its own computer on Agent37. It opens each dealer's inventory page in its own browser, reads every listing, and writes what it found to a file on its machine. This is a recording of a real run: forty-six seconds, nine tool calls.",
+      "actions": [
+        { "type": "click", "selector": "#run-audit", "moveMs": 800 },
+        { "type": "move", "selector": "#timeline", "atMs": 4200, "moveMs": 1200, "offsetY": -120 }
+      ],
+      "padAfterMs": 200
+    },
+    {
+      "id": "results",
+      "text": "FloorCheck pulls that file back and matches every financed serial number. Thirty-five units are verified on the lot. But three are listed as sold while the advance is still unpaid: two hundred sixty-two thousand dollars, sold out of trust. Plus three units that aren't listed anywhere.",
+      "actions": [
+        { "type": "move", "selector": "#kpi-verified", "atMs": 3800, "moveMs": 900 },
+        { "type": "move", "selector": "#kpi-soot", "atMs": 7600, "moveMs": 900 },
+        { "type": "move", "selector": "#kpi-notfound", "atMs": 14500, "moveMs": 900 },
+        { "type": "waitFor", "selector": "body[data-run-state='complete']", "timeout": 60000 }
+      ],
+      "padAfterMs": 300
+    },
+    {
+      "id": "evidence",
+      "text": "Every exception is defensible: the listing exactly as the dealer published it, the URL, a timestamp, and a field-by-field match against the ledger.",
+      "actions": [
+        { "type": "click", "selector": ".finding[data-type='SOLD_OUT_OF_TRUST']", "moveMs": 900 },
+        { "type": "scrollBy", "selector": "#drawer-body", "y": 520, "ms": 1400, "atMs": 6200 }
+      ],
+      "padAfterMs": 500
+    },
+    {
+      "id": "coverage",
+      "text": "For everything still on the lot, FloorCheck estimates what the collateral is worth today, so the lender sees coverage, not just existence.",
+      "actions": [
+        { "type": "click", "selector": "#drawer-close", "moveMs": 700 },
+        { "type": "move", "selector": "#kpi-coverage", "moveMs": 900 },
+        { "type": "click", "selector": "#tab-ledger", "atMs": 3200, "moveMs": 900 },
+        { "type": "scrollBy", "selector": ".table-wrap", "y": 380, "ms": 1600, "atMs": 4600 }
+      ],
+      "padAfterMs": 300
+    },
+    {
+      "id": "actions",
+      "text": "It drafts a payoff demand to each dealer, and the memo for the credit committee.",
+      "actions": [
+        { "type": "click", "selector": "#btn-demands", "moveMs": 900 },
+        { "type": "wait", "ms": 2600 },
+        { "type": "click", "selector": "#modal-close", "moveMs": 700 },
+        { "type": "click", "selector": "#btn-memo", "moveMs": 700 }
+      ],
+      "padAfterMs": 1600
+    },
+    {
+      "id": "schedule",
+      "text": "And it schedules itself on Agent37, to run every night at 2 AM.",
+      "actions": [
+        { "type": "click", "selector": "#modal-close", "moveMs": 600 },
+        { "type": "click", "selector": "#tab-activity", "moveMs": 700 },
+        { "type": "click", "selector": "#btn-schedule", "moveMs": 900 }
+      ],
+      "padAfterMs": 1400
+    },
+    {
+      "id": "outro",
+      "text": "FloorCheck walks every lot, every night, in under a minute, instead of an auditor driving lot to lot.",
+      "actions": [
+        { "type": "goto", "url": "/video/outro.html" },
+        { "type": "cursor", "visible": false }
+      ],
+      "padAfterMs": 1800
+    }
+  ]
+}

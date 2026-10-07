@@ -310,7 +310,9 @@ function setRowDone(el, status = 'done', dur) {
   if (dur != null) {
     const chip = document.createElement('span');
     chip.className = 'dur';
-    chip.textContent = dur < 1000 ? `${dur}ms` : `${(dur / 1000).toFixed(1)}s`;
+    // Hermes reports tool durations in seconds (float); other harnesses in ms.
+    const secs = dur < 100 && !Number.isInteger(dur) ? dur : dur / 1000;
+    chip.textContent = secs < 1 ? `${Math.round(secs * 1000)}ms` : `${secs.toFixed(1)}s`;
     st.before(chip);
   }
 }
@@ -339,8 +341,8 @@ function prettyLabel(d) {
     const dealer = d.dealer_id && S.config.dealers.find((x) => x.id === d.dealer_id);
     return { title: dealer ? `Opening ${esc(dealer.name)} inventory` : 'Opening page', detail: `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(url)}</a>` };
   }
-  let label = d.label || '';
-  if (label.length > 140) label = label.slice(0, 140) + '…';
+  let label = (d.label || '').replace(/\s+/g, ' ').trim();
+  if (label.length > 96) label = label.slice(0, 96) + '…';
   const path = d.args?.path || d.args?.file_path;
   return { title: esc(label || d.tool), detail: path ? `<span class="mono">${esc(path)}</span>` : '' };
 }
@@ -572,7 +574,7 @@ function openModal(title, html, model) {
 async function openMemo() {
   openModal('Credit memo', '<div class="muted">Drafting memo…</div>');
   const r = await fetch(`/api/runs/${S.run.id}/memo`, { method: 'POST' }).then((x) => x.json());
-  openModal('Credit memo', md(r.markdown || ''), r.model === 'template' ? 'template' : `OpenAI · ${r.model}`);
+  openModal('Credit memo', md(r.markdown || ''), r.model === 'template' ? '' : `OpenAI · ${r.model}`);
 }
 
 async function openDemands(dealerId) {
@@ -584,7 +586,7 @@ async function openDemands(dealerId) {
     .map((l) => `<div class="email" style="margin-bottom:16px"><div class="email-row"><b>To</b><span>${esc(l.to)}</span></div><div class="email-row"><b>Subject</b><span><strong>${esc(l.subject)}</strong></span></div><div class="email-body">${esc(l.body)}</div></div>`)
     .join('');
   const model = letters[0]?.model;
-  openModal(ids.length > 1 ? `Payoff demands (${ids.length})` : 'Payoff demand', html, model === 'template' ? 'template' : `OpenAI · ${model}`);
+  openModal(ids.length > 1 ? `Payoff demands (${ids.length})` : 'Payoff demand', html, model === 'template' ? '' : `OpenAI · ${model}`);
 }
 
 async function schedule() {

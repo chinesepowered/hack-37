@@ -1,0 +1,40 @@
+{
+  "baseUrl": "http://localhost:8080",
+  "viewport": { "width": 1920, "height": 1080 },
+  "cursor": { "x": 1500, "y": 960, "visible": true },
+  "voice": {
+    "preferNames": ["Jessica", "Laura", "Sarah", "Aria", "Lily"],
+    "model": "eleven_multilingual_v2",
+    "stability": 0.45, "similarity_boost": 0.8, "style": 0.25, "speed": 1.0
+  },
+  "segments": [
+    {
+      "id": "intro",
+      "text": "Meet FloorCheck, the AI floor plan auditor that walks every dealer lot, every night.",
+      "actions": [
+        { "type": "goto", "url": "/video/intro.html" },
+        { "type": "move", "selector": "#ledger .row[data-row='4'] .status", "offsetX": 40, "atMs": 2700, "moveMs": 900 }
+      ],
+      "padAfterMs": 300
+    },
+    {
+      "id": "flag",
+      "text": "One unit was sold, but never paid off. FloorCheck flags it instantly.",
+      "actions": [
+        { "type": "hover", "selector": ".brand-name" },
+        { "type": "click", "selector": "#ledger .row[data-row='4'] .status" },
+        { "type": "click", "selector": "#does-not-exist", "timeout": 1200 }
+      ]
+    },
+    {
+      "id": "outro",
+      "text": "Built with Agent37, InstaCloud, Monid and OpenAI.",
+      "actions": [
+        { "type": "goto", "url": "/video/outro.html" },
+        { "type": "hover", "selector": "#badge-monid", "atMs": 1500 },
+        { "type": "click", "selector": "#repo" }
+      ],
+      "padAfterMs": 900
+    }
+  ]
+}

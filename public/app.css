@@ -261,7 +261,7 @@ table.ledger { width: 100%; border-collapse: collapse; font-size: 13px; }
 .browser-dots i { width: 10px; height: 10px; border-radius: 50%; background: #d7dbe4; display: block; }
 .browser-dots i:nth-child(1) { background: #ff6159; } .browser-dots i:nth-child(2) { background: #ffbd2e; } .browser-dots i:nth-child(3) { background: #28c941; }
 .browser-url { flex: 1; background: #fff; border: 1px solid var(--line); border-radius: 7px; padding: 4px 10px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.browser img { display: block; width: 100%; }
+.browser img { display: block; width: 100%; max-height: 430px; object-fit: contain; background: #f6f7fa; }
 .capture-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; margin: 8px 2px 18px; }
 .cmp { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 18px; }
 .cmp th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); padding: 8px 10px; border-bottom: 1px solid var(--line); font-weight: 600; }
