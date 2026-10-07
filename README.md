@@ -1,5 +1,7 @@
 # FloorCheck: walks every lot, every night
 
+**Demo video (2:04):** [`demo/floorcheck-demo.mp4`](demo/floorcheck-demo.mp4)
+
 **FloorCheck is an AI floor-plan auditor for equipment lenders.** It replaces the field audit: the recurring trip where an auditor drives lot to lot with a clipboard to confirm that every unit the lender financed is still there.
 
 Floor-plan lenders pay for a dealer's inventory, and the dealer repays each advance when that unit sells. When a dealer sells a unit and keeps the money, the unit is **sold out of trust**, the classic floor-plan loss. Today lenders catch it with periodic on-site audits, usually weeks after the fact.
