@@ -314,3 +314,15 @@ table.ledger { width: 100%; border-collapse: collapse; font-size: 13px; }
   .facility, .divider, .mode-chip { display: none; }
   .panel { max-height: 70vh; }
 }
+
+.recovery { border: 1px solid #f7d9c4; background: linear-gradient(180deg, #fffaf6, #fff); border-radius: 12px; padding: 14px 16px; margin-bottom: 18px; }
+.recovery-head { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; margin-bottom: 10px; }
+.recovery-title { font-weight: 700; font-size: 14px; }
+.recovery-sub { color: var(--muted); font-size: 12.5px; margin-top: 2px; }
+.recovery-figs { display: flex; gap: 18px; text-align: right; }
+.recovery-figs b { display: block; font-size: 17px; font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+.recovery-figs b.neg { color: #c3262c; }
+.recovery-figs span { font-size: 11.5px; color: var(--muted); }
+.recovery .comps { background: #fff; margin-top: 4px; }
+.recovery .comps span { color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+a.btn { text-decoration: none; }

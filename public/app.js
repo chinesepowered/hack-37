@@ -541,6 +541,12 @@ function openDrawer(f) {
       <tr><td>Advance / price</td><td>${fmtFull(u.advance)}</td><td>${L?.price ? fmtFull(L.price) : '—'}</td><td></td></tr>
       <tr><td>Financed on</td><td>${esc(u.financed_on)}</td><td>—</td><td></td></tr></tbody></table>`;
   }
+  if (f.market && f.type !== 'COLLATERAL_SHORTFALL') {
+    const m = f.market;
+    const gap = u.advance - m.market_value;
+    html += `<div class="recovery"><div class="recovery-head"><div><div class="recovery-title">Recovery value · live market comps</div><div class="recovery-sub">Monid · ${esc(m.provider || 'marketplace scrape')} · ${m.comps_count} comparable listings</div></div><div class="recovery-figs"><div><b>${fmtFull(m.market_value)}</b><span>median comp</span></div><div><b class="${gap > 0 ? 'neg' : ''}">${gap > 0 ? '−' + fmtFull(gap) : fmtFull(-gap)}</b><span>${gap > 0 ? 'shortfall vs advance' : 'cushion vs advance'}</span></div></div></div>`;
+    html += `<div class="comps">${(m.sample || []).map((c) => `<div><span>${esc(c.title)}</span><b>${fmtFull(c.price_usd)}</b></div>`).join('')}</div></div>`;
+  }
   html += '<div class="drawer-actions">';
   if (f.type === 'SOLD_OUT_OF_TRUST') html += `<button class="btn primary" id="drawer-demand">${ICONS.file}Draft payoff demand</button>`;
   if (f.type === 'NOT_FOUND') html += `<button class="btn primary" id="drawer-spot">${ICONS.search}Request spot check</button>`;

@@ -80,7 +80,9 @@ while (pending.size && Date.now() < until) {
     const full = await (await fetch(`https://api.monid.ai/v1/runs/${run.runId}`, { headers: H })).json();
     let data = full.output;
     if (data?.data?.download_link) data = await (await fetch(data.data.download_link)).json();
-    const items = (data?.data?.response || []).flatMap((p) => p?.data?.data || []);
+    const resp = data?.data?.response;
+    const pages = Array.isArray(resp) ? resp : resp ? [resp] : [];
+    const items = pages.flatMap((p) => (Array.isArray(p?.data?.data) ? p.data.data : Array.isArray(p?.data) ? p.data : []));
     const machines = items.filter((i) => typeof i.price_usd === 'number' && i.price_usd >= t.min * 0.8).map((i) => ({ title: i.title?.replace(/ Opens in a new window or tab$/, ''), price_usd: i.price_usd, year: i.year ?? null, hours: i.hours ?? null, location: i.location ?? null, listing_url: i.listing_url ?? null }));
     console.log(`${t.model}: ${run.status}, ${items.length} items, ${machines.length} machines`);
     if (machines.length) {

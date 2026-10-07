@@ -129,5 +129,9 @@
     addEventListener('resize', fit); fit();
   })();
 </script>
+<script>
+  // ?hide=openai,monid hides sponsor badges that aren't wired up for this cut.
+  for (const id of (new URLSearchParams(location.search).get('hide') || '').split(',').filter(Boolean)) document.getElementById('badge-' + id)?.remove();
+</script>
 </body>
 </html>
