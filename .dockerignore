@@ -6,3 +6,9 @@ node_modules
 demo
 video
 scripts/video
+.insta
+.claude
+.agents
+.github
+skills-lock.json
+pitch.html

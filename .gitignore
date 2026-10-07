@@ -7,3 +7,4 @@ video/out/
 video/work/
 *.log
 .DS_Store
+.insta/

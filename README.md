@@ -2,6 +2,8 @@
 
 **FloorCheck is an AI floor-plan auditor for equipment lenders.** Each night an always-on agent reads every dealer's public inventory and matches it against every serial number the lender financed. It flags units sold without the loan being repaid, with evidence a credit committee can act on. One audit of 3 dealers takes under a minute, instead of an auditor driving lot to lot.
 
+**Live app:** https://prod-main-app-130d74-00j3gxx4m5q.compute.instacloud-edge.com
+
 **Demo video:** _link coming_
 
 ## The problem
