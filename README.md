@@ -4,7 +4,7 @@
 
 **Live app:** https://prod-main-app-130d74-00j3gxx4m5q.compute.instacloud-edge.com
 
-**Demo video:** _link coming_
+**Demo video:** https://www.youtube.com/watch?v=W7yFAcGtNXw
 
 ## The problem
 

@@ -4,7 +4,7 @@
 
 **Links:**
 - Repo: https://github.com/chinesepowered/hack-37
-- Demo video: _(paste link)_
+- Demo video: https://www.youtube.com/watch?v=W7yFAcGtNXw
 - Live app: https://prod-main-app-130d74-00j3gxx4m5q.compute.instacloud-edge.com
 
 ## 1) What does your agent do, and which workflow does it improve?
