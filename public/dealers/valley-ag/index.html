@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valley Ag &amp; Turf | Equipment Inventory</title>
+<meta name="description" content="Valley Ag &amp; Turf - Serving Central Valley growers since 1987. New and used equipment inventory.">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+a{color:inherit}
+.wrap{max-width:1220px;margin:0 auto;padding:0 16px}
+.topbar .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding-top:6px;padding-bottom:6px}
+.masthead .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:16px;padding-bottom:16px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;min-width:0}
+.logo svg{flex:none;display:block}
+.brandtext{display:flex;flex-direction:column;min-width:0}
+.mainnav ul{list-style:none;margin:0 auto;padding:0 16px;display:flex;flex-wrap:wrap;max-width:1220px}
+.mainnav a{display:block;text-decoration:none}
+.promo{text-align:center;padding:8px 16px}
+main.wrap{padding-top:14px;padding-bottom:30px}
+.crumbs{font-size:12px;margin-bottom:6px}
+h1{margin:4px 0 8px}
+.intro{margin:0 0 14px;max-width:820px}
+.filters{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;padding:11px 13px;margin:0 0 12px}
+.filters label{display:flex;flex-direction:column;gap:3px;font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.4px}
+.filters select,.filters input{font:inherit;font-size:13px;padding:6px 7px;min-width:170px;max-width:100%;color:#222}
+.filters .grow{flex:1 1 200px}.filters .grow input{width:100%}
+.filters button{font:inherit;font-size:13px;font-weight:bold;padding:7px 18px;cursor:pointer}
+.resultbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;font-size:12px;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.unit{position:relative;background:#fff;display:flex;flex-direction:column;min-width:0}
+.ph{position:relative;aspect-ratio:12/7;overflow:hidden}
+.ph svg.eq{display:block;width:100%;height:100%}
+.unit[data-status="SOLD"] .ph svg.eq{filter:grayscale(.75) opacity(.7)}
+.tag{position:absolute;top:8px;right:8px;font-size:11px;font-weight:bold;padding:2px 7px;letter-spacing:.3px}
+.stock{position:absolute;left:8px;bottom:6px;font-size:10px;color:rgba(0,0,0,.45)}
+.sold-ribbon{position:absolute;left:-25%;right:-25%;top:50%;transform:translateY(-50%) rotate(-17deg);background:#d0191f;color:#fff;text-align:center;font:900 40px/1.35 Impact,"Arial Black","Liberation Sans",Arial,sans-serif;letter-spacing:10px;text-indent:10px;border-top:3px solid #fff;border-bottom:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.35);text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.pending-badge{position:absolute;top:10px;left:10px;background:#f5a300;color:#231a00;font:900 13px/1 Arial,"Liberation Sans",sans-serif;letter-spacing:.8px;padding:7px 10px;border:2px solid #fff;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.info{padding:11px 13px 13px;display:flex;flex-direction:column;flex:1}
+.title{margin:0 0 3px}
+.cat{font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
+.specs{list-style:none;margin:0 0 10px;padding:0;font-size:12.5px}
+.specs li{padding:3px 0;overflow-wrap:anywhere}
+.serial{font-family:"Courier New","Liberation Mono","DejaVu Sans Mono",monospace;font-size:12.5px;font-weight:bold;color:#111;background:#f1f1ec;padding:0 4px;border-radius:2px;letter-spacing:.2px}
+.pricebox{margin-top:auto}
+.price{margin:2px 0 2px}
+.price.sold{color:#d0191f;letter-spacing:1px}
+.pending-note{font-size:12px;font-weight:bold;color:#a86b00;margin-bottom:2px}
+.finance-note{font-size:11.5px;margin-bottom:9px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-block;font-size:12px;padding:6px 12px;text-decoration:none;cursor:pointer}
+.cta{margin-top:26px;padding:16px 20px;font-size:14px}
+footer{font-size:12.5px;padding:24px 0 14px}
+footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px 28px}
+footer h4{margin:0 0 8px;font-size:14px}
+footer p{margin:0 0 6px}
+footer .legal{margin-top:18px;padding-top:12px;border-top:1px solid rgba(255,255,255,.15);font-size:11.5px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px}
+@media (max-width:640px){.contact{text-align:left!important}.mainnav a{padding:9px 11px!important;font-size:12px!important}.brand{font-size:24px!important}h1{font-size:21px!important}.filters select,.filters input{min-width:0;width:100%}.filters label{flex:1 1 100%}}
+
+body{background:#e9e4d2;font:13px/1.5 Verdana,"DejaVu Sans",Geneva,sans-serif;color:#2b2b2b}
+.topbar{background:#1d4a1b;color:#d8e6cf;font-size:12px}
+.topbar a{color:#f3c316}
+.masthead{background:#fffdf5;border-bottom:4px solid #f3c316}
+.brand{font:bold 31px/1.05 Georgia,"Bitstream Charter","DejaVu Serif",serif;color:#2f6b2a}
+.tagline{font:italic 14px Georgia,"Bitstream Charter",serif;color:#6d6a44}
+.contact{text-align:right;font-size:12px;color:#555}
+.contact .phone{display:inline-block;background:#2f6b2a;color:#fff;font:bold 20px Georgia,"Bitstream Charter",serif;padding:7px 14px;border:2px solid #f3c316;border-radius:4px;margin-bottom:4px}
+.mainnav{background:linear-gradient(#3f8d37,#2a6125);border-bottom:1px solid #173d14}
+.mainnav a{color:#fff;font-weight:bold;font-size:13px;padding:11px 18px;border-right:1px solid rgba(255,255,255,.18);text-shadow:0 1px 0 rgba(0,0,0,.35)}
+.mainnav a:hover{background:#245520}
+.mainnav a.active{background:#f3c316;color:#1d4a1b;text-shadow:none}
+.promo{background:#fff4bf;border-bottom:1px solid #e3cf6e;color:#5a4a00;font-size:13px}
+main{background:#fff;border-left:1px solid #d8d0b4;border-right:1px solid #d8d0b4}
+.crumbs{color:#7a7a6a}.crumbs a{color:#2f6b2a}
+h1{font:bold 26px Georgia,"Bitstream Charter",serif;color:#1d4a1b;border-bottom:2px solid #e5dfc9;padding-bottom:8px}
+.filters{background:#f4f1e3;border:1px solid #ddd4b2}
+.filters select,.filters input{border:1px solid #b9b39a;border-radius:0}
+.filters button{background:#2f6b2a;color:#fff;border:1px solid #1d4a1b;border-radius:0}
+.resultbar{color:#666}
+.unit{border:1px solid #cfc7a8;box-shadow:0 2px 3px rgba(0,0,0,.08)}
+.ph{background:linear-gradient(#f6faef,#e3eed6);border-bottom:3px solid #f3c316}
+.title{font:bold 16px/1.25 Georgia,"Bitstream Charter",serif;color:#1d4a1b}
+.cat{color:#8a7d2c}
+.specs li{border-bottom:1px dotted #cfcab4}
+.price{font:bold 22px Georgia,"Bitstream Charter",serif;color:#2f6b2a}
+.btn{background:#f3c316;color:#1d4a1b;border:1px solid #c9a20f}
+.btn.alt{background:#fff;color:#2f6b2a;border:1px solid #2f6b2a}
+.tag{background:#2f6b2a;color:#fff}
+.finance-note{color:#2f6b2a}
+.cta{background:#2f6b2a;color:#fff;border:3px double #f3c316}
+.cta b{color:#f3c316}
+footer{background:#1d4a1b;color:#cfdcc6;border-top:5px solid #f3c316}
+footer h4{color:#f3c316;font-family:Georgia,"Bitstream Charter",serif}
+</style>
+</head>
+<body class="dealer-valley-ag">
+<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><symbol id="gnd" viewBox="0 0 240 140"><path d="M0 124V108Q50 92 104 104T206 98Q226 96 240 100V124Z" fill="#cfe2b4" opacity=".75"/><path d="M0 124V114Q70 104 140 114T240 110V124Z" fill="#c2d9a3"/><rect y="124" width="240" height="16" fill="#b9cf98"/><rect y="124" width="240" height="1.6" fill="#8fae6a"/><ellipse cx="120" cy="124.5" rx="98" ry="4.5" fill="#000" opacity=".16"/></symbol><symbol id="eq-tractor" viewBox="0 0 240 140"><rect x="56" y="88" width="96" height="10" fill="#1d4a1b"/><path d="M38 96V72Q38 63 47 62L136 57V96Z" fill="#2f7a2c"/><path d="M38 70H45V94H38Z" fill="#1d4a1b" opacity=".6"/><path d="M48 66L132 61.5V64.5L48 69Z" fill="#fff" opacity=".2"/><rect x="39" y="63.5" width="6" height="4" rx="1" fill="#ffe7a1"/><rect x="104" y="31" width="5" height="28" fill="#1d4a1b"/><rect x="102" y="28" width="9" height="4" rx="1" fill="#1d4a1b"/><path d="M130 98V56H180V98Z" fill="#2f7a2c"/><path d="M134 25H200L203 62H131Z" fill="#cfe6ee"/><path d="M140 28H160L158 40H139Z" fill="#fff" opacity=".35"/><rect x="129" y="24" width="5" height="40" fill="#2f7a2c"/><rect x="165" y="25" width="3" height="37" fill="#2f7a2c"/><rect x="199" y="24" width="5" height="40" fill="#2f7a2c"/><path d="M123 18H208Q212 18 212 22V26H123Z" fill="#2f7a2c"/><rect x="123" y="25" width="89" height="2" fill="#1d4a1b" opacity=".45"/><circle cx="64" cy="103" r="21" fill="#25282b"/><circle cx="64" cy="103" r="19.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="64" cy="103" r="11.8" fill="#f2c418"/><circle cx="64" cy="103" r="11.8" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="64" cy="103" r="3.8" fill="#1d4a1b"/><circle cx="170" cy="91" r="33" fill="#25282b"/><circle cx="170" cy="91" r="31.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="170" cy="91" r="18.5" fill="#f2c418"/><circle cx="170" cy="91" r="18.5" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="170" cy="91" r="5.9" fill="#1d4a1b"/><path d="M127 92 A43 43 0 0 1 213 92 H206 A36 36 0 0 0 134 92 Z" fill="#2f7a2c"/></symbol><symbol id="eq-compact-tractor" viewBox="0 0 240 140"><rect x="70" y="96" width="92" height="8" fill="#1d4a1b"/><path d="M58 102V83Q58 76 65 75L140 71V102Z" fill="#2f7a2c"/><path d="M58 81H63V99H58Z" fill="#1d4a1b" opacity=".6"/><path d="M66 78L136 74.5V77L66 80.5Z" fill="#fff" opacity=".2"/><path d="M136 102V70H180V102Z" fill="#2f7a2c"/><rect x="164" y="46" width="7" height="24" rx="2" fill="#25282b"/><rect x="148" y="64" width="23" height="6" rx="2" fill="#25282b"/><path d="M138 72L146 58" stroke="#25282b" stroke-width="3" stroke-linecap="round"/><ellipse cx="146" cy="57" rx="7" ry="2" fill="#25282b"/><rect x="178" y="24" width="6" height="76" rx="2" fill="#25282b"/><rect x="174" y="22" width="14" height="5" rx="2" fill="#25282b"/><rect x="116" y="62" width="10" height="38" fill="#2f7a2c"/><rect x="116" y="62" width="10" height="38" fill="#1d4a1b" opacity=".25"/><path d="M120 90L88 79" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M124 65L100 61L56 101" fill="none" stroke="#2f7a2c" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M30 96Q27 110 33 122L60 121L58 97Z" fill="#5f676e"/><rect x="32" y="119" width="28" height="3" fill="#1d4a1b"/><circle cx="82" cy="108" r="16" fill="#25282b"/><circle cx="82" cy="108" r="14.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="82" cy="108" r="9.0" fill="#f2c418"/><circle cx="82" cy="108" r="9.0" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="82" cy="108" r="2.9" fill="#1d4a1b"/><circle cx="170" cy="99" r="25" fill="#25282b"/><circle cx="170" cy="99" r="23.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="170" cy="99" r="14.0" fill="#f2c418"/><circle cx="170" cy="99" r="14.0" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="170" cy="99" r="4.5" fill="#1d4a1b"/><path d="M138 100 A32 32 0 0 1 202 100 H197 A27 27 0 0 0 143 100 Z" fill="#2f7a2c"/></symbol><symbol id="eq-utility-vehicle" viewBox="0 0 240 140"><rect x="52" y="97" width="150" height="9" fill="#1d4a1b"/><path d="M38 103V93Q38 83 50 81L104 78L110 103Z" fill="#2f7a2c"/><path d="M50 85L102 82.5V85L50 87.5Z" fill="#fff" opacity=".2"/><rect x="39" y="87" width="6" height="4" rx="1" fill="#ffe7a1"/><path d="M104 103L110 78H150V103Z" fill="#2f7a2c"/><path d="M104 103L110 78H150V103Z" fill="#1d4a1b" opacity=".25"/><rect x="127" y="56" width="7" height="22" rx="2" fill="#25282b"/><rect x="114" y="73" width="22" height="6" rx="2" fill="#25282b"/><path d="M110 77L117 63" stroke="#25282b" stroke-width="3" stroke-linecap="round"/><path d="M104 80L117 32H158L151 77" fill="none" stroke="#25282b" stroke-width="4.5" stroke-linejoin="round"/><rect x="111" y="27" width="53" height="6" rx="2" fill="#2f7a2c"/><path d="M146 76H214V103H146Z" fill="#2f7a2c"/><rect x="146" y="73" width="68" height="4" fill="#1d4a1b"/><rect x="150" y="82" width="60" height="3" fill="#fff" opacity=".2"/><circle cx="70" cy="108" r="16" fill="#25282b"/><circle cx="70" cy="108" r="14.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="70" cy="108" r="9.0" fill="#f2c418"/><circle cx="70" cy="108" r="9.0" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="70" cy="108" r="2.9" fill="#1d4a1b"/><circle cx="180" cy="108" r="16" fill="#25282b"/><circle cx="180" cy="108" r="14.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="180" cy="108" r="9.0" fill="#f2c418"/><circle cx="180" cy="108" r="9.0" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="180" cy="108" r="2.9" fill="#1d4a1b"/></symbol><symbol id="eq-excavator" viewBox="0 0 240 140"><rect x="48" y="100" width="146" height="24" rx="12" fill="#25282b"/><rect x="51" y="103" width="140" height="18" rx="9" fill="#3b3f43"/><line x1="60" y1="122.6" x2="182" y2="122.6" stroke="#4a4f54" stroke-width="2.6" stroke-dasharray="3 3"/><circle cx="60.0" cy="112" r="8" fill="#5d6268"/><circle cx="60.0" cy="112" r="2" fill="#25282b"/><circle cx="84.4" cy="112" r="5.5" fill="#5d6268"/><circle cx="84.4" cy="112" r="2" fill="#25282b"/><circle cx="108.8" cy="112" r="5.5" fill="#5d6268"/><circle cx="108.8" cy="112" r="2" fill="#25282b"/><circle cx="133.2" cy="112" r="5.5" fill="#5d6268"/><circle cx="133.2" cy="112" r="2" fill="#25282b"/><circle cx="157.6" cy="112" r="5.5" fill="#5d6268"/><circle cx="157.6" cy="112" r="2" fill="#25282b"/><circle cx="182.0" cy="112" r="8" fill="#5d6268"/><circle cx="182.0" cy="112" r="2" fill="#25282b"/><rect x="96" y="93" width="76" height="9" fill="#1d4a1b"/><path d="M132 74Q124 24 74 21" fill="none" stroke="#2f7a2c" stroke-width="13" stroke-linecap="round"/><path d="M124 70L104 38" stroke="#c9ced3" stroke-width="3.5" stroke-linecap="round"/><path d="M74 21L42 88" stroke="#2f7a2c" stroke-width="9" stroke-linecap="round"/><path d="M86 24L62 58" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M29 84L56 90L52 109Q43 119 31 113Q25 99 29 84Z" fill="#5f676e"/><path d="M31 113L27 117M37 116L34 120M44 116L42 120" stroke="#1d4a1b" stroke-width="2.5"/><path d="M82 96V74Q82 70 86 70H188Q202 70 202 84V96Z" fill="#2f7a2c"/><path d="M178 70H188Q202 70 202 84V96H178Z" fill="#1d4a1b" opacity=".3"/><rect x="150" y="76" width="22" height="2.5" fill="#1d4a1b" opacity=".45"/><rect x="150" y="81" width="22" height="2.5" fill="#1d4a1b" opacity=".45"/><path d="M84 72V38Q84 34 88 34H113L120 72Z" fill="#2f7a2c"/><path d="M89 40H109L115 69H89Z" fill="#cfe6ee"/><path d="M91 42H101L99 52H91Z" fill="#fff" opacity=".35"/></symbol><symbol id="eq-mini-excavator" viewBox="0 0 240 140"><rect x="66" y="106" width="104" height="18" rx="9" fill="#25282b"/><rect x="69" y="109" width="98" height="12" rx="6" fill="#3b3f43"/><line x1="75" y1="122.6" x2="161" y2="122.6" stroke="#4a4f54" stroke-width="2.6" stroke-dasharray="3 3"/><circle cx="75.0" cy="115" r="5" fill="#5d6268"/><circle cx="75.0" cy="115" r="2" fill="#25282b"/><circle cx="103.7" cy="115" r="2.5" fill="#5d6268"/><circle cx="103.7" cy="115" r="2" fill="#25282b"/><circle cx="132.3" cy="115" r="2.5" fill="#5d6268"/><circle cx="132.3" cy="115" r="2" fill="#25282b"/><circle cx="161.0" cy="115" r="5" fill="#5d6268"/><circle cx="161.0" cy="115" r="2" fill="#25282b"/><path d="M50 104H63V122Q57 124 50 122Z" fill="#5f676e"/><rect x="60" y="108" width="12" height="5" fill="#1d4a1b"/><rect x="92" y="99" width="62" height="8" fill="#1d4a1b"/><path d="M90 92Q84 46 62 40" fill="none" stroke="#2f7a2c" stroke-width="9" stroke-linecap="round"/><path d="M86 82L78 56" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M62 40L40 94" stroke="#2f7a2c" stroke-width="6.5" stroke-linecap="round"/><path d="M28 88L50 94L46 111Q38 118 30 112Q24 100 28 88Z" fill="#5f676e"/><path d="M84 103V85Q84 80 89 80H160Q172 80 172 92V103Z" fill="#2f7a2c"/><path d="M160 80Q172 80 172 92V103H158V80Z" fill="#1d4a1b" opacity=".3"/><rect x="104" y="40" width="3.5" height="42" fill="#25282b"/><rect x="147" y="40" width="3.5" height="42" fill="#25282b"/><path d="M98 35H157Q160 35 160 38V43H98Z" fill="#2f7a2c"/><rect x="129" y="60" width="7" height="20" rx="2" fill="#25282b"/><rect x="116" y="74" width="21" height="6" rx="2" fill="#25282b"/><rect x="111" y="66" width="4" height="13" fill="#25282b"/></symbol><symbol id="eq-track-loader" viewBox="0 0 240 140"><rect x="70" y="104" width="112" height="20" rx="10" fill="#25282b"/><rect x="73" y="107" width="106" height="14" rx="7" fill="#3b3f43"/><line x1="80" y1="122.6" x2="172" y2="122.6" stroke="#4a4f54" stroke-width="2.6" stroke-dasharray="3 3"/><circle cx="80.0" cy="114" r="6" fill="#5d6268"/><circle cx="80.0" cy="114" r="2" fill="#25282b"/><circle cx="103.0" cy="114" r="3.5" fill="#5d6268"/><circle cx="103.0" cy="114" r="2" fill="#25282b"/><circle cx="126.0" cy="114" r="3.5" fill="#5d6268"/><circle cx="126.0" cy="114" r="2" fill="#25282b"/><circle cx="149.0" cy="114" r="3.5" fill="#5d6268"/><circle cx="149.0" cy="114" r="2" fill="#25282b"/><circle cx="172.0" cy="114" r="6" fill="#5d6268"/><circle cx="172.0" cy="114" r="2" fill="#25282b"/><path d="M78 106V70H174Q184 70 184 80V106Z" fill="#2f7a2c"/><rect x="166" y="78" width="14" height="18" rx="2" fill="#1d4a1b" opacity=".35"/><path d="M90 72V30Q90 26 94 26H136L144 72Z" fill="#1d4a1b"/><path d="M96 32H132L138 70H96Z" fill="#cfe6ee"/><path d="M98 34H112L110 46H98Z" fill="#fff" opacity=".35"/><path d="M108 32V70M120 32V70" stroke="#1d4a1b" stroke-opacity=".35" stroke-width="1.5"/><path d="M150 88L128 50" stroke="#c9ced3" stroke-width="3.5" stroke-linecap="round"/><path d="M174 70L162 36L124 38L66 88" fill="none" stroke="#2f7a2c" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/><path d="M32 80H68L70 118L32 122Q26 100 32 80Z" fill="#5f676e"/><rect x="30" y="118" width="40" height="4" fill="#1d4a1b"/></symbol><symbol id="eq-skid-steer" viewBox="0 0 240 140"><path d="M78 100V70H174Q184 70 184 80V100Z" fill="#2f7a2c"/><rect x="166" y="78" width="14" height="18" rx="2" fill="#1d4a1b" opacity=".35"/><path d="M90 72V30Q90 26 94 26H136L144 72Z" fill="#1d4a1b"/><path d="M96 32H132L138 70H96Z" fill="#cfe6ee"/><path d="M98 34H112L110 46H98Z" fill="#fff" opacity=".35"/><path d="M108 32V70M120 32V70" stroke="#1d4a1b" stroke-opacity=".35" stroke-width="1.5"/><path d="M150 88L128 50" stroke="#c9ced3" stroke-width="3.5" stroke-linecap="round"/><path d="M174 70L162 36L124 38L66 88" fill="none" stroke="#2f7a2c" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/><path d="M32 80H68L70 118L32 122Q26 100 32 80Z" fill="#5f676e"/><rect x="30" y="118" width="40" height="4" fill="#1d4a1b"/><circle cx="100" cy="106" r="18" fill="#25282b"/><circle cx="100" cy="106" r="16.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="100" cy="106" r="10.1" fill="#f2c418"/><circle cx="100" cy="106" r="10.1" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="100" cy="106" r="3.2" fill="#1d4a1b"/><circle cx="160" cy="106" r="18" fill="#25282b"/><circle cx="160" cy="106" r="16.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="160" cy="106" r="10.1" fill="#f2c418"/><circle cx="160" cy="106" r="10.1" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="160" cy="106" r="3.2" fill="#1d4a1b"/></symbol><symbol id="eq-backhoe" viewBox="0 0 240 140"><rect x="64" y="92" width="122" height="10" fill="#1d4a1b"/><path d="M58 100V80Q58 72 66 72L118 70V100Z" fill="#2f7a2c"/><path d="M58 78H63V98H58Z" fill="#1d4a1b" opacity=".6"/><path d="M66 75.5L116 73.5V76L66 78Z" fill="#fff" opacity=".2"/><rect x="100" y="46" width="4" height="25" fill="#1d4a1b"/><path d="M114 100V66H186V100Z" fill="#2f7a2c"/><path d="M122 30H176L180 66H120Z" fill="#cfe6ee"/><path d="M126 33H144L142 44H125Z" fill="#fff" opacity=".35"/><rect x="118" y="28" width="5" height="40" fill="#2f7a2c"/><rect x="176" y="28" width="5" height="40" fill="#2f7a2c"/><path d="M112 22H186Q189 22 189 25V30H112Z" fill="#2f7a2c"/><path d="M120 74L94 70L46 98" fill="none" stroke="#2f7a2c" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M18 90Q15 106 21 120L50 119L48 92Z" fill="#5f676e"/><rect x="20" y="117" width="30" height="3" fill="#1d4a1b"/><path d="M186 92L194 121H206L198 92Z" fill="#1d4a1b"/><path d="M186 84Q202 34 220 30" fill="none" stroke="#2f7a2c" stroke-width="8" stroke-linecap="round"/><path d="M196 70L210 40" stroke="#c9ced3" stroke-width="2.5" stroke-linecap="round"/><path d="M220 30L226 92" stroke="#2f7a2c" stroke-width="6" stroke-linecap="round"/><path d="M216 88L234 91Q237 105 229 113L215 106Z" fill="#5f676e"/><circle cx="80" cy="107" r="17" fill="#25282b"/><circle cx="80" cy="107" r="15.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="80" cy="107" r="9.5" fill="#f2c418"/><circle cx="80" cy="107" r="9.5" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="80" cy="107" r="3.1" fill="#1d4a1b"/><circle cx="156" cy="97" r="27" fill="#25282b"/><circle cx="156" cy="97" r="25.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="156" cy="97" r="15.1" fill="#f2c418"/><circle cx="156" cy="97" r="15.1" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="156" cy="97" r="4.9" fill="#1d4a1b"/><path d="M122 98 A34 34 0 0 1 190 98 H185 A29 29 0 0 0 127 98 Z" fill="#2f7a2c"/></symbol><symbol id="eq-wheel-loader" viewBox="0 0 240 140"><path d="M58 98V78H120V98Z" fill="#2f7a2c"/><rect x="110" y="82" width="12" height="14" fill="#1d4a1b"/><path d="M114 100V64H204Q212 64 212 74V100Z" fill="#2f7a2c"/><path d="M200 64Q212 64 212 74V100H200Z" fill="#1d4a1b" opacity=".3"/><rect x="186" y="70" width="10" height="22" rx="2" fill="#1d4a1b" opacity=".35"/><rect x="176" y="46" width="5" height="19" fill="#1d4a1b"/><path d="M116 66V26Q116 22 120 22H156L162 66Z" fill="#2f7a2c"/><path d="M121 28H153L158 64H121Z" fill="#cfe6ee"/><path d="M123 30H137L135 42H123Z" fill="#fff" opacity=".35"/><path d="M112 56L62 74" stroke="#1d4a1b" stroke-width="4" stroke-linecap="round"/><path d="M120 72L50 84" stroke="#2f7a2c" stroke-width="10" stroke-linecap="round"/><path d="M10 64Q3 92 14 120L54 118L52 70Q30 61 10 64Z" fill="#5f676e"/><rect x="12" y="117" width="42" height="4" fill="#1d4a1b"/><circle cx="78" cy="98" r="26" fill="#25282b"/><circle cx="78" cy="98" r="24.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="78" cy="98" r="14.6" fill="#f2c418"/><circle cx="78" cy="98" r="14.6" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="78" cy="98" r="4.7" fill="#1d4a1b"/><circle cx="168" cy="98" r="26" fill="#25282b"/><circle cx="168" cy="98" r="24.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="168" cy="98" r="14.6" fill="#f2c418"/><circle cx="168" cy="98" r="14.6" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="168" cy="98" r="4.7" fill="#1d4a1b"/><path d="M45 99 A33 33 0 0 1 111 99 H106 A28 28 0 0 0 50 99 Z" fill="#2f7a2c"/><path d="M135 99 A33 33 0 0 1 201 99 H196 A28 28 0 0 0 140 99 Z" fill="#2f7a2c"/></symbol><symbol id="eq-telehandler" viewBox="0 0 240 140"><path d="M100 47L33 29" stroke="#5f676e" stroke-width="9" stroke-linecap="round"/><path d="M204 79L72 41" stroke="#2f7a2c" stroke-width="15" stroke-linecap="round"/><path d="M150 86L122 58" stroke="#c9ced3" stroke-width="4" stroke-linecap="round"/><rect x="22" y="26" width="8" height="42" rx="1" fill="#1d4a1b"/><rect x="4" y="64" width="26" height="4" fill="#1d4a1b"/><path d="M42 104V90Q42 86 46 86H200Q206 86 206 92V104Z" fill="#2f7a2c"/><rect x="46" y="90" width="156" height="3" fill="#fff" opacity=".2"/><path d="M86 88V46Q86 42 90 42H116L122 88Z" fill="#2f7a2c"/><path d="M91 48H113L118 86H91Z" fill="#cfe6ee"/><path d="M93 50H104L102 62H93Z" fill="#fff" opacity=".35"/><circle cx="66" cy="105" r="19" fill="#25282b"/><circle cx="66" cy="105" r="17.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="66" cy="105" r="10.6" fill="#f2c418"/><circle cx="66" cy="105" r="10.6" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="66" cy="105" r="3.4" fill="#1d4a1b"/><circle cx="176" cy="105" r="19" fill="#25282b"/><circle cx="176" cy="105" r="17.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="176" cy="105" r="10.6" fill="#f2c418"/><circle cx="176" cy="105" r="10.6" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="176" cy="105" r="3.4" fill="#1d4a1b"/></symbol><symbol id="eq-boom-lift" viewBox="0 0 240 140"><path d="M70 36L46 14" stroke="#5f676e" stroke-width="7" stroke-linecap="round"/><path d="M46 16L44 26" stroke="#1d4a1b" stroke-width="4"/><rect x="12" y="26" width="40" height="4" fill="#1d4a1b"/><path d="M14 26V10H50V26M14 18H50M32 10V26" fill="none" stroke="#25282b" stroke-width="2.2"/><rect x="14" y="20" width="36" height="6" fill="#2f7a2c" opacity=".85"/><path d="M114 76L70 36" stroke="#2f7a2c" stroke-width="10" stroke-linecap="round"/><path d="M128 80L100 60" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M100 95V77Q100 72 105 72H170Q177 72 177 79V95Z" fill="#2f7a2c"/><path d="M156 72H170Q177 72 177 79V95H156Z" fill="#1d4a1b" opacity=".3"/><circle cx="114" cy="76" r="6" fill="#1d4a1b"/><rect x="54" y="94" width="132" height="16" rx="3" fill="#2f7a2c"/><rect x="54" y="106" width="132" height="4" fill="#1d4a1b" opacity=".35"/><circle cx="78" cy="110" r="14" fill="#25282b"/><circle cx="78" cy="110" r="12.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="78" cy="110" r="7.8" fill="#f2c418"/><circle cx="78" cy="110" r="7.8" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="78" cy="110" r="2.5" fill="#1d4a1b"/><circle cx="162" cy="110" r="14" fill="#25282b"/><circle cx="162" cy="110" r="12.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="162" cy="110" r="7.8" fill="#f2c418"/><circle cx="162" cy="110" r="7.8" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="162" cy="110" r="2.5" fill="#1d4a1b"/></symbol><symbol id="eq-compact-utility" viewBox="0 0 240 140"><rect x="72" y="108" width="84" height="16" rx="8" fill="#25282b"/><rect x="75" y="111" width="78" height="10" rx="5" fill="#3b3f43"/><line x1="80" y1="122.6" x2="148" y2="122.6" stroke="#4a4f54" stroke-width="2.6" stroke-dasharray="3 3"/><circle cx="80.0" cy="116" r="4" fill="#5d6268"/><circle cx="80.0" cy="116" r="2" fill="#25282b"/><circle cx="102.7" cy="116" r="1.5" fill="#5d6268"/><circle cx="102.7" cy="116" r="2" fill="#25282b"/><circle cx="125.3" cy="116" r="1.5" fill="#5d6268"/><circle cx="125.3" cy="116" r="2" fill="#25282b"/><circle cx="148.0" cy="116" r="4" fill="#5d6268"/><circle cx="148.0" cy="116" r="2" fill="#25282b"/><path d="M80 110V79Q80 74 85 74H150Q156 74 156 80V110Z" fill="#2f7a2c"/><rect x="88" y="82" width="22" height="14" rx="2" fill="#1d4a1b" opacity=".3"/><rect x="154" y="104" width="27" height="6" rx="1" fill="#1d4a1b"/><path d="M146 76V49Q146 45 150 45H160V76Z" fill="#1d4a1b"/><path d="M151 46L168 40" stroke="#25282b" stroke-width="3.5" stroke-linecap="round"/><path d="M130 90L110 62" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M150 60L112 52L66 88" fill="none" stroke="#2f7a2c" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M36 88H68V118L36 121Q31 104 36 88Z" fill="#5f676e"/><rect x="34" y="118" width="34" height="3" fill="#1d4a1b"/></symbol></svg>
+
+<div class="topbar"><div class="wrap"><span>4120 E Jensen Ave, Fresno, CA 93725</span><span>Hours: Mon-Fri 7:30-5:30 · Sat 8-12 &nbsp;|&nbsp; Call <a href="#">(559) 555-0142</a></span></div></div>
+<header class="masthead"><div class="wrap">
+<a class="logo" href="#"><svg viewBox="0 0 64 64" width="66" height="66" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#2f6b2a" stroke="#f3c316" stroke-width="3"/><circle cx="32" cy="34" r="11" fill="#f3c316"/><path d="M5 36H59V42Q32 34 5 42Z" fill="#2f6b2a"/><path d="M5 40Q32 32 59 40V48Q32 40 5 48Z" fill="#8cc152"/><path d="M8 48Q32 40 56 48L52 54Q32 47 12 54Z" fill="#6ea83c"/><path d="M14 56Q32 50 50 56L44 60Q32 56 20 60Z" fill="#8cc152"/></svg><span class="brandtext"><span class="brand">Valley Ag &amp; Turf</span><span class="tagline">Serving Central Valley growers since 1987</span></span></a>
+<div class="contact"><span class="phone">(559) 555-0142</span><br>4120 E Jensen Ave, Fresno, CA 93725<br>Mon-Fri 7:30-5:30 · Sat 8-12</div>
+</div></header>
+<nav class="mainnav"><ul><li><a href="#">Home</a></li><li><a href="#" class="active">New Equipment</a></li><li><a href="#">Used</a></li><li><a href="#">Parts</a></li><li><a href="#">Service</a></li><li><a href="#">Financing</a></li><li><a href="#">Contact</a></li></ul></nav>
+<div class="promo">&#9733; <b>0% financing for 48 months</b> on select new compact &amp; utility tractors. Ask about our fall harvest specials! &#9733;</div>
+<main class="wrap">
+<div class="crumbs"><a href="#">Home</a> &rsaquo; <a href="#">Inventory</a> &rsaquo; All Equipment</div>
+<h1>Equipment Inventory (18 units)</h1>
+<p class="intro">Browse our current new and used inventory below. All new units come with full factory warranty and PDI by our certified techs. Don't see what you need? Give us a call. we can locate it.</p>
+<form class="filters" action="#" method="get">
+<label>Category<select name="category"><option>All Categories</option><option>Compact Tractor</option><option>Tractor</option><option>Utility Vehicle</option></select></label>
+<label>Make<select name="make"><option>All Makes</option><option>Case IH</option><option>John Deere</option><option>Kubota</option><option>Mahindra</option><option>Massey Ferguson</option><option>New Holland</option></select></label>
+<label>Condition<select name="condition"><option>Any</option><option>New</option><option>Used</option></select></label>
+<label class="grow">Search<input type="search" name="q" placeholder="Keyword, model or stock #"></label>
+<button type="button">Search</button>
+</form>
+<div class="resultbar"><span>18 units found</span><span>Sort by: <b>Featured</b></span></div>
+<section class="grid" aria-label="Inventory">
+<article class="unit" id="unit-1LV3038EVRH140962" data-serial="1LV3038EVRH140962" data-status="AVAILABLE" data-year="2024" data-make="John Deere" data-model="3038E" data-price="35400">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 John Deere 3038E"><use href="#gnd"/><use href="#eq-compact-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA6829</span></div>
+<div class="info"><h3 class="title">2024 John Deere 3038E</h3><div class="cat">Compact Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">1LV3038EVRH140962</span></li><li>Hours: 34</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$35,400</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-KBRTVX1140W83351" data-serial="KBRTVX1140W83351" data-status="AVAILABLE" data-year="2024" data-make="Kubota" data-model="RTV-X1140" data-price="23900">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Kubota RTV-X1140"><use href="#gnd"/><use href="#eq-utility-vehicle"/></svg><span class="tag">New</span><span class="stock">Stock #VA4345</span></div>
+<div class="info"><h3 class="title">2024 Kubota RTV-X1140</h3><div class="cat">Utility Vehicle</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">KBRTVX1140W83351</span></li><li>Hours: 48</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$23,900</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-1PY5075EPNN204417" data-serial="1PY5075EPNN204417" data-status="AVAILABLE" data-year="2023" data-make="John Deere" data-model="5075E" data-price="61500">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 John Deere 5075E"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA4093</span></div>
+<div class="info"><h3 class="title">2023 John Deere 5075E</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">1PY5075EPNN204417</span></li><li>Hours: 41</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$61,500</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-KBL4701HST50388" data-serial="KBL4701HST50388" data-status="AVAILABLE" data-year="2017" data-make="Kubota" data-model="L4701" data-price="31500">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2017 Kubota L4701"><use href="#gnd"/><use href="#eq-compact-tractor"/></svg><span class="tag">Used</span><span class="stock">Stock #VA3485</span></div>
+<div class="info"><h3 class="title">2017 Kubota L4701</h3><div class="cat">Compact Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">KBL4701HST50388</span></li><li>Hours: 860</li><li>Condition: Used</li></ul>
+<div class="pricebox"><div class="price">$31,500</div><div class="finance-note">Call for quote &amp; trade-in value</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-KBM7172PRE5531086" data-serial="KBM7172PRE5531086" data-status="SOLD" data-year="2024" data-make="Kubota" data-model="M7-172" data-price="">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Kubota M7-172"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA7653</span><div class="sold-ribbon" aria-label="Sold">SOLD</div></div>
+<div class="info"><h3 class="title">2024 Kubota M7-172</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">KBM7172PRE5531086</span></li><li>Hours: 20</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price sold">SOLD 09/28</div><div class="finance-note">This unit has been sold. Call us for similar units.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-1LV1025RJRJ117304" data-serial="1LV1025RJRJ117304" data-status="SOLD" data-year="2024" data-make="John Deere" data-model="1025R" data-price="">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 John Deere 1025R"><use href="#gnd"/><use href="#eq-compact-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA2246</span><div class="sold-ribbon" aria-label="Sold">SOLD</div></div>
+<div class="info"><h3 class="title">2024 John Deere 1025R</h3><div class="cat">Compact Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">1LV1025RJRJ117304</span></li><li>Hours: 17</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price sold">SOLD</div><div class="finance-note">This unit has been sold. Call us for similar units.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-KBL3902HST72218" data-serial="KBL3902HST72218" data-status="AVAILABLE" data-year="2024" data-make="Kubota" data-model="L3902" data-price="34200">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Kubota L3902"><use href="#gnd"/><use href="#eq-compact-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA3247</span></div>
+<div class="info"><h3 class="title">2024 Kubota L3902</h3><div class="cat">Compact Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">KBL3902HST72218</span></li><li>Hours: 52</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$34,200</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-NHT6180ZPRF09163" data-serial="NHT6180ZPRF09163" data-status="AVAILABLE" data-year="2023" data-make="New Holland" data-model="T6.180" data-price="162200">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 New Holland T6.180"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA1895</span></div>
+<div class="info"><h3 class="title">2023 New Holland T6.180</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">NHT6180ZPRF09163</span></li><li>Hours: 6</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$162,200</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-KBBX2380TV91475" data-serial="KBBX2380TV91475" data-status="AVAILABLE" data-year="2024" data-make="Kubota" data-model="BX2380" data-price="23800">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Kubota BX2380"><use href="#gnd"/><use href="#eq-compact-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA6779</span></div>
+<div class="info"><h3 class="title">2024 Kubota BX2380</h3><div class="cat">Compact Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">KBBX2380TV91475</span></li><li>Hours: 5</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$23,800</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-CIH75CFRM3302915" data-serial="CIH75CFRM3302915" data-status="AVAILABLE" data-year="2024" data-make="Case IH" data-model="Farmall 75C" data-price="57300">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Case IH Farmall 75C"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA6772</span></div>
+<div class="info"><h3 class="title">2024 Case IH Farmall 75C</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">CIH75CFRM3302915</span></li><li>Hours: 51</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$57,300</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-1RW8370RCPD061528" data-serial="1RW8370RCPD061528" data-status="AVAILABLE" data-year="2023" data-make="John Deere" data-model="8R 370" data-price="451300">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 John Deere 8R 370"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA4660</span></div>
+<div class="info"><h3 class="title">2023 John Deere 8R 370</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">1RW8370RCPD061528</span></li><li>Hours: 2</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$451,300</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-MHN6075PST26640" data-serial="MHN6075PST26640" data-status="AVAILABLE" data-year="2023" data-make="Mahindra" data-model="6075" data-price="53000">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 Mahindra 6075"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA1911</span></div>
+<div class="info"><h3 class="title">2023 Mahindra 6075</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">MHN6075PST26640</span></li><li>Hours: 31</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$53,000</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-KBRTVX1100C31207" data-serial="KBRTVX1100C31207" data-status="AVAILABLE" data-year="2020" data-make="Kubota" data-model="RTV-X1100C" data-price="17900">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2020 Kubota RTV-X1100C"><use href="#gnd"/><use href="#eq-utility-vehicle"/></svg><span class="tag">Used</span><span class="stock">Stock #VA5710</span></div>
+<div class="info"><h3 class="title">2020 Kubota RTV-X1100C</h3><div class="cat">Utility Vehicle</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">KBRTVX1100C31207</span></li><li>Hours: 412</li><li>Condition: Used</li></ul>
+<div class="pricebox"><div class="price">$17,900</div><div class="finance-note">Call for quote &amp; trade-in value</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-CIHMAG340JJF41207" data-serial="CIHMAG340JJF41207" data-status="AVAILABLE" data-year="2023" data-make="Case IH" data-model="Magnum 340" data-price="413000">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 Case IH Magnum 340"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA7171</span></div>
+<div class="info"><h3 class="title">2023 Case IH Magnum 340</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">CIHMAG340JJF41207</span></li><li>Hours: 1</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$413,000</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-1RW6145RHPA018842" data-serial="1RW6145RHPA018842" data-status="AVAILABLE" data-year="2024" data-make="John Deere" data-model="6R 145" data-price="217200">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 John Deere 6R 145"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA1613</span></div>
+<div class="info"><h3 class="title">2024 John Deere 6R 145</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">1RW6145RHPA018842</span></li><li>Hours: 47</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$217,200</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-MF5S145DYN40778" data-serial="MF5S145DYN40778" data-status="AVAILABLE" data-year="2024" data-make="Massey Ferguson" data-model="5S.145" data-price="137500">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Massey Ferguson 5S.145"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA3833</span></div>
+<div class="info"><h3 class="title">2024 Massey Ferguson 5S.145</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">MF5S145DYN40778</span></li><li>Hours: 2</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$137,500</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-1LV5065EJJJ401187" data-serial="1LV5065EJJJ401187" data-status="AVAILABLE" data-year="2018" data-make="John Deere" data-model="5065E" data-price="38900">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2018 John Deere 5065E"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">Used</span><span class="stock">Stock #VA2826</span></div>
+<div class="info"><h3 class="title">2018 John Deere 5065E</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">1LV5065EJJJ401187</span></li><li>Hours: 1240</li><li>Condition: Used</li></ul>
+<div class="pricebox"><div class="price">$38,900</div><div class="finance-note">Call for quote &amp; trade-in value</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-NHWM75HZR207539" data-serial="NHWM75HZR207539" data-status="AVAILABLE" data-year="2024" data-make="New Holland" data-model="Workmaster 75" data-price="55600">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 New Holland Workmaster 75"><use href="#gnd"/><use href="#eq-tractor"/></svg><span class="tag">New</span><span class="stock">Stock #VA1691</span></div>
+<div class="info"><h3 class="title">2024 New Holland Workmaster 75</h3><div class="cat">Tractor</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">NHWM75HZR207539</span></li><li>Hours: 44</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$55,600</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+</section>
+<div class="cta"><b>Financing available.</b> Flexible terms for farms, contractors and small businesses. Call (559) 555-0142 or stop by 4120 E Jensen Ave, Fresno, CA 93725.</div>
+</main>
+<footer><div class="wrap">
+<div class="cols">
+<div><h4>Valley Ag &amp; Turf</h4><p>4120 E Jensen Ave, Fresno, CA 93725</p><p>Phone: (559) 555-0142</p></div>
+<div><h4>Store Hours</h4><p>Mon-Fri 7:30-5:30 · Sat 8-12</p><p>Closed Sundays &amp; major holidays</p></div>
+<div><h4>Departments</h4><p>Sales &middot; Parts &middot; Service &middot; Financing</p><p>Authorized dealer for John Deere, Kubota, New Holland, Case IH, Massey Ferguson &amp; Mahindra. Prices plus tax, freight &amp; setup. Subject to prior sale.</p></div>
+</div>
+<div class="legal"><span>&copy; 2026 Valley Ag &amp; Turf. All rights reserved.</span><span>4120 E Jensen Ave, Fresno, CA 93725</span></div>
+</div></footer>
+</body>
+</html>

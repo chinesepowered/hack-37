@@ -1,0 +1,140 @@
+{
+  "_doc": "What each dealer's public inventory page shows. Every ledger unit of the dealer is listed as AVAILABLE unless overridden. status MISSING = not listed at all. extras = dealer inventory the lender did not finance.",
+  "valley-ag": {
+    "brand": "Valley Ag & Turf",
+    "tagline": "Serving Central Valley growers since 1987",
+    "address": "4120 E Jensen Ave, Fresno, CA 93725",
+    "phone": "(559) 555-0142",
+    "hours": "Mon-Fri 7:30-5:30 · Sat 8-12",
+    "overrides": {
+      "KBM7172PRE5531086": {
+        "status": "SOLD",
+        "sold_label": "SOLD 09/28"
+      },
+      "1LV1025RJRJ117304": {
+        "status": "SOLD",
+        "sold_label": "SOLD"
+      }
+    },
+    "extras": [
+      {
+        "year": 2018,
+        "make": "John Deere",
+        "model": "5065E",
+        "category": "tractor",
+        "serial": "1LV5065EJJJ401187",
+        "price": 38900,
+        "hours": 1240,
+        "condition": "Used"
+      },
+      {
+        "year": 2017,
+        "make": "Kubota",
+        "model": "L4701",
+        "category": "compact-tractor",
+        "serial": "KBL4701HST50388",
+        "price": 31500,
+        "hours": 860,
+        "condition": "Used"
+      },
+      {
+        "year": 2020,
+        "make": "Kubota",
+        "model": "RTV-X1100C",
+        "category": "utility-vehicle",
+        "serial": "KBRTVX1100C31207",
+        "price": 17900,
+        "hours": 412,
+        "condition": "Used"
+      }
+    ]
+  },
+  "ironline": {
+    "brand": "Ironline Farm & Ranch",
+    "tagline": "Tractors and hay tools for the high desert",
+    "address": "1855 E Greg St, Sparks, NV 89431",
+    "phone": "(775) 555-0187",
+    "hours": "Mon-Fri 7-5 · Sat 8-12",
+    "overrides": {
+      "1L06120MCPK118804": {
+        "status": "SALE_PENDING"
+      },
+      "JCB5427AG3209914": {
+        "status": "MISSING"
+      },
+      "B4SK18832": {
+        "status": "SOLD",
+        "sold_label": "SOLD"
+      }
+    },
+    "extras": [
+      {
+        "year": 2016,
+        "make": "John Deere",
+        "model": "6130R",
+        "category": "tractor",
+        "serial": "1RW6130RCGP081147",
+        "price": 98000,
+        "hours": 3420,
+        "condition": "Used"
+      },
+      {
+        "year": 2019,
+        "make": "Kubota",
+        "model": "SSV65",
+        "category": "skid-steer",
+        "serial": "KBSSV65H20418",
+        "price": 38500,
+        "hours": 1450,
+        "condition": "Used"
+      }
+    ]
+  },
+  "bayshore": {
+    "brand": "Bayshore Ag & Orchard",
+    "tagline": "Orchard, vineyard & specialty crop equipment",
+    "address": "2290 Navy Dr, Stockton, CA 95206",
+    "phone": "(209) 555-0119",
+    "hours": "Mon-Sat 6:30-6",
+    "overrides": {
+      "KBM5N091NC40217": {
+        "status": "MISSING"
+      },
+      "JCB53660AS3188502": {
+        "status": "MISSING"
+      }
+    },
+    "extras": [
+      {
+        "year": 2017,
+        "make": "New Holland",
+        "model": "T4.75F",
+        "category": "tractor",
+        "serial": "NHT475FHN20961",
+        "price": 39500,
+        "hours": 2610,
+        "condition": "Used"
+      },
+      {
+        "year": 2020,
+        "make": "Kubota",
+        "model": "RTV-X1100C",
+        "category": "utility-vehicle",
+        "serial": "KBRTVX1100C40852",
+        "price": 16900,
+        "hours": 520,
+        "condition": "Rental fleet"
+      },
+      {
+        "year": 2021,
+        "make": "JCB",
+        "model": "525-60 Agri",
+        "category": "telehandler",
+        "serial": "JCB52560AG2904417",
+        "price": 64900,
+        "hours": 1810,
+        "condition": "Rental fleet"
+      }
+    ]
+  }
+}

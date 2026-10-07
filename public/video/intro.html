@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FloorCheck - Intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<style>
+  :root {
+    --ink: #0B1220; --ink-2: #131C33; --accent: #3D5AFE; --ok: #16A34A; --bad: #E5484D;
+    --text: #FFFFFF; --muted: #C9D2E3; --dim: #8390AB; --line: rgba(201, 210, 227, .10);
+    --ease: cubic-bezier(.2, .8, .2, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; background: var(--ink); overflow: hidden; }
+  body {
+    font-family: Inter, "Inter Display", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text); -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision;
+  }
+  .stage {
+    position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden;
+    background:
+      radial-gradient(1100px 760px at 24% 44%, rgba(61, 90, 254, .17), transparent 62%),
+      radial-gradient(900px 700px at 86% 70%, rgba(61, 90, 254, .09), transparent 65%),
+      linear-gradient(155deg, #0B1220 0%, #0E1628 48%, #131C33 100%);
+    animation: stageIn .7s ease both;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(201, 210, 227, .055) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 210, 227, .055) 1px, transparent 1px);
+    background-size: 64px 64px; background-position: -1px -1px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 72% at 50% 46%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 70% 72% at 50% 46%, #000 30%, transparent 100%);
+  }
+  .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse 85% 85% at 50% 50%, transparent 55%, rgba(4, 7, 14, .55) 100%); }
+  .content { position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between; padding: 0 118px 0 136px; }
+
+  /* brand column */
+  .brand { width: 760px; }
+  .lockup { display: flex; align-items: center; gap: 34px; }
+  .mark { width: 124px; height: 124px; flex: none; border-radius: 31px; box-shadow: 0 18px 44px rgba(61, 90, 254, .45); }
+  .mark .check { stroke-dasharray: 48; stroke-dashoffset: 48; animation: draw .7s var(--ease) .45s forwards; }
+  .mark .floor { stroke-dasharray: 30; stroke-dashoffset: 30; animation: draw .5s var(--ease) .85s forwards; }
+  .name { font-size: 108px; font-weight: 800; letter-spacing: -.045em; line-height: 1; }
+  .rule { width: 88px; height: 5px; border-radius: 3px; background: var(--accent); margin: 58px 0 40px; box-shadow: 0 0 24px rgba(61, 90, 254, .7); }
+  .tagline { font-size: 56px; font-weight: 700; letter-spacing: -.028em; line-height: 1.08; }
+  .tagline em { font-style: normal; background: linear-gradient(90deg, #AEBBFF, #7D93FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .subtitle { margin-top: 24px; font-size: 29px; font-weight: 500; color: var(--muted); letter-spacing: -.008em; }
+  .up { opacity: 0; animation: up .9s var(--ease) both; }
+
+  /* ledger card */
+  .ledger {
+    width: 830px; border-radius: 26px; padding: 30px 34px 26px; position: relative;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .065), rgba(255, 255, 255, .025));
+    border: 1px solid rgba(201, 210, 227, .14);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, .45), inset 0 1px 0 rgba(255, 255, 255, .07);
+    opacity: 0; animation: cardIn 1s var(--ease) .3s both;
+  }
+  .lhead { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+  .ltitle { display: flex; align-items: center; gap: 12px; font-size: 24px; font-weight: 700; letter-spacing: -.01em; }
+  .live { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 rgba(61, 90, 254, .6); animation: ping 1.2s ease-out .6s 3; }
+  .lmeta { font-size: 18px; color: var(--dim); font-weight: 500; font-variant-numeric: tabular-nums; }
+  .cols, .row { display: grid; grid-template-columns: 262px 1fr 236px; align-items: center; }
+  .cols { padding: 0 16px 12px; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: .14em; color: var(--dim); border-bottom: 1px solid var(--line); }
+  .rows { position: relative; }
+  .row { height: 66px; padding: 0 16px; border-bottom: 1px solid var(--line); position: relative; }
+  .row:last-child { border-bottom: 0; }
+  .serial { font-size: 19.5px; font-weight: 500; color: #E7ECF6; letter-spacing: .02em; font-variant-numeric: tabular-nums slashed-zero; font-feature-settings: "tnum", "zero"; }
+  .model { font-size: 20px; color: var(--muted); white-space: nowrap; }
+  .status { position: relative; height: 38px; }
+  .pill {
+    position: absolute; left: 0; top: 0; height: 38px; display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+    padding: 0 16px 0 10px; border-radius: 999px; font-size: 17px; font-weight: 600; font-style: normal; letter-spacing: .005em;
+  }
+  .pill .ic { width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+  .pend { color: #9AA6C0; background: rgba(201, 210, 227, .07); border: 1px solid rgba(201, 210, 227, .14); padding-left: 14px; }
+  .pend .dot { width: 8px; height: 8px; border-radius: 50%; background: #9AA6C0; animation: blink .8s ease-in-out 4; }
+  .ok { color: #7FE3A6; background: rgba(22, 163, 74, .15); border: 1px solid rgba(22, 163, 74, .45); opacity: 0; }
+  .ok .ic { background: var(--ok); }
+  .sold { color: #FF9A9D; background: rgba(229, 72, 77, .16); border: 1px solid rgba(229, 72, 77, .6); opacity: 0; box-shadow: 0 0 0 0 rgba(229, 72, 77, .5); }
+  .sold .ic { background: var(--bad); color: #fff; font-size: 14px; font-weight: 800; }
+  .row .pend { animation: pillOut .28s ease var(--t) forwards; }
+  .row .ok { animation: pillIn .5s cubic-bezier(.2, .9, .25, 1.25) var(--t) forwards; }
+  .row.bad .pend { animation: pillOut .28s ease 2.45s forwards; }
+  .row.bad .sold { animation: pillIn .5s cubic-bezier(.2, .9, .25, 1.25) 2.45s forwards, ring 1s ease-out 2.6s 1; }
+  .row.bad::before { content: ""; position: absolute; inset: 0; border-radius: 10px; background: rgba(229, 72, 77, .09); box-shadow: inset 3px 0 0 var(--bad); opacity: 0; animation: fadeIn .45s ease 2.45s forwards; }
+  .row.bad .serial, .row.bad .model { animation: toRed .45s ease 2.45s forwards; }
+  .scan {
+    position: absolute; left: 0; right: 0; top: 0; height: 66px; pointer-events: none; opacity: 0;
+    background: linear-gradient(180deg, transparent, rgba(61, 90, 254, .13) 70%, rgba(61, 90, 254, .0));
+    border-bottom: 2px solid rgba(125, 147, 255, .85); box-shadow: 0 10px 26px -10px rgba(61, 90, 254, .9);
+    animation: scan 1.75s cubic-bezier(.45, .05, .55, .95) .8s both;
+  }
+  .lfoot { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; padding: 16px 16px 0; border-top: 1px solid var(--line); font-size: 18px; font-weight: 600; opacity: 0; animation: up .6s var(--ease) 2.75s both; }
+  .lfoot .l { display: flex; gap: 26px; }
+  .tally { display: inline-flex; align-items: center; gap: 9px; color: var(--muted); }
+  .tally i { width: 10px; height: 10px; border-radius: 50%; }
+  .tally.g i { background: var(--ok); } .tally.r i { background: var(--bad); }
+  .risk { color: #FF9A9D; font-variant-numeric: tabular-nums; }
+
+  @keyframes stageIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes up { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+  @keyframes cardIn { from { opacity: 0; transform: translateX(60px) scale(.97); } to { opacity: 1; transform: none; } }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  @keyframes pillOut { to { opacity: 0; transform: scale(.85); } }
+  @keyframes pillIn { from { opacity: 0; transform: scale(.7); } to { opacity: 1; transform: none; } }
+  @keyframes fadeIn { to { opacity: 1; } }
+  @keyframes toRed { to { color: #FFC2C4; } }
+  @keyframes blink { 50% { opacity: .25; } }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(61, 90, 254, .65); } 100% { box-shadow: 0 0 0 14px rgba(61, 90, 254, 0); } }
+  @keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(229, 72, 77, .55); } 100% { box-shadow: 0 0 0 16px rgba(229, 72, 77, 0); } }
+  @keyframes scan {
+    0% { opacity: 0; transform: translateY(0); }
+    8% { opacity: 1; }
+    88% { opacity: 1; transform: translateY(330px); }
+    100% { opacity: 0; transform: translateY(330px); }
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="grid"></div>
+  <div class="vignette"></div>
+  <div class="content">
+    <section class="brand" id="brand">
+      <div class="lockup up" style="animation-delay:.1s">
+        <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5A76FF"/><stop offset="1" stop-color="#2E49EC"/>
+            </linearGradient>
+            <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <rect width="64" height="64" rx="16" fill="url(#tile)"/>
+          <rect x=".5" y=".5" width="63" height="63" rx="15.5" fill="url(#sheen)" stroke="rgba(255,255,255,.18)"/>
+          <path class="check" d="M19.5 29.5 L28 38 L45 20.5" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="floor" d="M20 47.5 H44" fill="none" stroke="#fff" stroke-width="4.6" stroke-linecap="round" opacity=".92"/>
+        </svg>
+        <div class="name brand-name">FloorCheck</div>
+      </div>
+      <div class="rule up" style="animation-delay:.35s"></div>
+      <h1 class="tagline up" style="animation-delay:.45s">Walks every lot, <em>every night.</em></h1>
+      <p class="subtitle up" style="animation-delay:.6s">The AI floor-plan auditor for equipment lenders</p>
+    </section>
+
+    <section class="ledger" id="ledger">
+      <div class="lhead">
+        <div class="ltitle"><span class="live"></span>Nightly lot audit</div>
+        <div class="lmeta">Dealer #0412 · Lot 3 · 2:14 AM</div>
+      </div>
+      <div class="cols"><span>Serial</span><span>Model</span><span>Status</span></div>
+      <div class="rows">
+        <div class="row" data-row="1" style="--t:.95s"><span class="serial">1T0333GMKNF412093</span><span class="model">John Deere 333G</span>
+          <span class="status"><i class="pill pend"><b class="dot"></b>Checking</i><i class="pill ok"><b class="ic"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 6.2 L5 8.6 L9.6 3.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b>Verified</i></span></div>
+        <div class="row" data-row="2" style="--t:1.2s"><span class="serial">CAT0259DKFTL04821</span><span class="model">Cat 259D3</span>
+          <span class="status"><i class="pill pend"><b class="dot"></b>Checking</i><i class="pill ok"><b class="ic"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 6.2 L5 8.6 L9.6 3.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b>Verified</i></span></div>
+        <div class="row" data-row="3" style="--t:1.45s"><span class="serial">KBCZ054CPN1H31270</span><span class="model">Kubota KX040-4</span>
+          <span class="status"><i class="pill pend"><b class="dot"></b>Checking</i><i class="pill ok"><b class="ic"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 6.2 L5 8.6 L9.6 3.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b>Verified</i></span></div>
+        <div class="row bad" data-row="4"><span class="serial">B3BW11873</span><span class="model">Bobcat T770</span>
+          <span class="status"><i class="pill pend"><b class="dot"></b>Checking</i><i class="pill sold"><b class="ic">!</b>SOLD – not paid off</i></span></div>
+        <div class="row" data-row="5" style="--t:1.7s"><span class="serial">JJGN580SNKC712345</span><span class="model">Case 580SN</span>
+          <span class="status"><i class="pill pend"><b class="dot"></b>Checking</i><i class="pill ok"><b class="ic"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 6.2 L5 8.6 L9.6 3.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b>Verified</i></span></div>
+        <div class="row" data-row="6" style="--t:1.95s"><span class="serial">0300214567</span><span class="model">JLG 600S</span>
+          <span class="status"><i class="pill pend"><b class="dot"></b>Checking</i><i class="pill ok"><b class="ic"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2.5 6.2 L5 8.6 L9.6 3.6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></b>Verified</i></span></div>
+        <div class="scan"></div>
+      </div>
+      <div class="lfoot">
+        <div class="l"><span class="tally g"><i></i>5 verified</span><span class="tally r"><i></i>1 exception</span></div>
+        <span class="risk">$84,500 out of trust</span>
+      </div>
+    </section>
+  </div>
+</div>
+<script>
+  // Fit the 1920x1080 stage into any viewport (scale 1 at 1920x1080).
+  (function () {
+    var st = document.getElementById('stage');
+    function fit() {
+      var s = Math.min(innerWidth / 1920, innerHeight / 1080);
+      st.style.transform = 'translate(' + (innerWidth - 1920 * s) / 2 + 'px,' + (innerHeight - 1080 * s) / 2 + 'px) scale(' + s + ')';
+    }
+    addEventListener('resize', fit); fit();
+  })();
+</script>
+</body>
+</html>

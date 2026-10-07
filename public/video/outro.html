@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FloorCheck - Outro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<style>
+  :root {
+    --ink: #0B1220; --accent: #3D5AFE; --ok: #16A34A; --bad: #E5484D;
+    --text: #FFFFFF; --muted: #C9D2E3; --dim: #8390AB; --ease: cubic-bezier(.2, .8, .2, 1);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; background: var(--ink); overflow: hidden; }
+  body {
+    font-family: Inter, "Inter Display", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: var(--text); -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision;
+  }
+  .stage {
+    position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; overflow: hidden;
+    background:
+      radial-gradient(900px 620px at 50% 36%, rgba(61, 90, 254, .20), transparent 64%),
+      radial-gradient(1400px 600px at 50% 112%, rgba(61, 90, 254, .10), transparent 70%),
+      linear-gradient(160deg, #0B1220 0%, #0E1628 50%, #131C33 100%);
+    animation: fade .7s ease both;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(201, 210, 227, .055) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 210, 227, .055) 1px, transparent 1px);
+    background-size: 64px 64px; background-position: -1px -1px;
+    -webkit-mask-image: radial-gradient(ellipse 62% 66% at 50% 44%, #000 25%, transparent 100%);
+    mask-image: radial-gradient(ellipse 62% 66% at 50% 44%, #000 25%, transparent 100%);
+  }
+  .vignette { position: absolute; inset: 0; background: radial-gradient(ellipse 85% 85% at 50% 50%, transparent 55%, rgba(4, 7, 14, .55) 100%); }
+  .center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-bottom: 10px; }
+  .up { opacity: 0; animation: up .9s var(--ease) both; }
+
+  .lockup { display: flex; align-items: center; gap: 30px; }
+  .mark { width: 120px; height: 120px; flex: none; border-radius: 30px; box-shadow: 0 18px 44px rgba(61, 90, 254, .5); }
+  .mark .check { stroke-dasharray: 48; stroke-dashoffset: 48; animation: draw .7s var(--ease) .35s forwards; }
+  .mark .floor { stroke-dasharray: 30; stroke-dashoffset: 30; animation: draw .5s var(--ease) .75s forwards; }
+  .name { font-size: 104px; font-weight: 800; letter-spacing: -.045em; line-height: 1; }
+  .tagline { margin-top: 44px; font-size: 58px; font-weight: 700; letter-spacing: -.028em; }
+  .tagline em { font-style: normal; background: linear-gradient(90deg, #AEBBFF, #7D93FF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .subtitle { margin-top: 18px; font-size: 28px; font-weight: 500; color: var(--muted); }
+
+  .built { margin-top: 84px; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+  .label { display: flex; align-items: center; gap: 22px; font-size: 17px; font-weight: 600; letter-spacing: .24em; text-transform: uppercase; color: var(--dim); }
+  .label::before, .label::after { content: ""; width: 120px; height: 1px; background: linear-gradient(90deg, transparent, rgba(201, 210, 227, .35)); }
+  .label::after { transform: scaleX(-1); }
+  .badges { display: flex; gap: 22px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 14px; height: 70px; padding: 0 34px 0 16px; border-radius: 999px;
+    font-size: 28px; font-weight: 600; letter-spacing: -.01em; color: #EEF2FA;
+    background: linear-gradient(180deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .03));
+    border: 1px solid rgba(201, 210, 227, .17);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .28), inset 0 1px 0 rgba(255, 255, 255, .07);
+    transition: translate .25s var(--ease), border-color .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .badge:hover { translate: 0 -4px; border-color: rgba(125, 147, 255, .75); background: linear-gradient(180deg, rgba(61, 90, 254, .2), rgba(61, 90, 254, .08)); box-shadow: 0 20px 40px rgba(14, 25, 70, .55), 0 0 0 4px rgba(61, 90, 254, .14); }
+  .mono {
+    width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; flex: none;
+    font-size: 18px; font-weight: 800; color: #DCE3FF; letter-spacing: 0;
+    background: radial-gradient(circle at 30% 25%, rgba(125, 147, 255, .55), rgba(61, 90, 254, .28)); border: 1px solid rgba(125, 147, 255, .55);
+  }
+  .repo {
+    margin-top: 70px; display: inline-flex; align-items: center; gap: 16px; padding: 14px 26px 14px 16px; border-radius: 16px;
+    font-size: 28px; font-weight: 500; color: var(--muted); letter-spacing: -.005em;
+    background: rgba(11, 18, 32, .55); border: 1px solid rgba(201, 210, 227, .12);
+  }
+  .repo .ic { width: 42px; height: 42px; border-radius: 11px; display: grid; place-items: center; background: rgba(61, 90, 254, .18); border: 1px solid rgba(61, 90, 254, .45); }
+  .repo b { color: #fff; font-weight: 600; }
+
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="grid"></div>
+  <div class="vignette"></div>
+  <main class="center">
+    <div class="lockup up" style="animation-delay:.05s">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <defs>
+          <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#5A76FF"/><stop offset="1" stop-color="#2E49EC"/>
+          </linearGradient>
+          <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="16" fill="url(#tile)"/>
+        <rect x=".5" y=".5" width="63" height="63" rx="15.5" fill="url(#sheen)" stroke="rgba(255,255,255,.18)"/>
+        <path class="check" d="M19.5 29.5 L28 38 L45 20.5" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path class="floor" d="M20 47.5 H44" fill="none" stroke="#fff" stroke-width="4.6" stroke-linecap="round" opacity=".92"/>
+      </svg>
+      <div class="name brand-name">FloorCheck</div>
+    </div>
+    <h1 class="tagline up" style="animation-delay:.25s">Walks every lot, <em>every night.</em></h1>
+    <p class="subtitle up" style="animation-delay:.4s">The AI floor-plan auditor for equipment lenders</p>
+
+    <section class="built" id="built">
+      <div class="label up" style="animation-delay:.6s">Built with</div>
+      <div class="badges">
+        <span class="badge up" id="badge-agent37" style="animation-delay:.75s"><span class="mono">A</span>Agent37</span>
+        <span class="badge up" id="badge-instacloud" style="animation-delay:.87s"><span class="mono">I</span>InstaCloud</span>
+        <span class="badge up" id="badge-monid" style="animation-delay:.99s"><span class="mono">M</span>Monid</span>
+        <span class="badge up" id="badge-openai" style="animation-delay:1.11s"><span class="mono">O</span>OpenAI</span>
+      </div>
+    </section>
+
+    <div class="repo up" id="repo" style="animation-delay:1.3s">
+      <span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C3CEFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7 L3 12 L8 17"/><path d="M16 7 L21 12 L16 17"/><path d="M13.5 4.5 L10.5 19.5"/></svg></span>
+      <span>github.com/<b>chinesepowered/hack-37</b></span>
+    </div>
+  </main>
+</div>
+<script>
+  (function () {
+    var st = document.getElementById('stage');
+    function fit() {
+      var s = Math.min(innerWidth / 1920, innerHeight / 1080);
+      st.style.transform = 'translate(' + (innerWidth - 1920 * s) / 2 + 'px,' + (innerHeight - 1080 * s) / 2 + 'px) scale(' + s + ')';
+    }
+    addEventListener('resize', fit); fit();
+  })();
+</script>
+<script>
+  // ?hide=openai,monid hides sponsor badges that aren't wired up for this cut.
+  for (const id of (new URLSearchParams(location.search).get('hide') || '').split(',').filter(Boolean)) document.getElementById('badge-' + id)?.remove();
+</script>
+</body>
+</html>
