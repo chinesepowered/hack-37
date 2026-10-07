@@ -1,0 +1,51 @@
+{
+  "_doc": "What each dealer's public inventory page shows. Every ledger unit of the dealer is listed as AVAILABLE unless overridden. status MISSING = not listed at all. extras = dealer inventory the lender did not finance.",
+  "valley-ag": {
+    "brand": "Valley Ag & Turf",
+    "tagline": "Serving Central Valley growers since 1987",
+    "address": "4120 E Jensen Ave, Fresno, CA 93725",
+    "phone": "(559) 555-0142",
+    "hours": "Mon-Fri 7:30-5:30 · Sat 8-12",
+    "overrides": {
+      "KBM7172PRE5531086": { "status": "SOLD", "sold_label": "SOLD 09/28" },
+      "1LV1025RJRJ117304": { "status": "SOLD", "sold_label": "SOLD" }
+    },
+    "extras": [
+      { "year": 2018, "make": "John Deere", "model": "5065E", "category": "tractor", "serial": "1LV5065EJJJ401187", "price": 38900, "hours": 1240, "condition": "Used" },
+      { "year": 2017, "make": "Kubota", "model": "L4701", "category": "compact-tractor", "serial": "KBL4701HST50388", "price": 31500, "hours": 860, "condition": "Used" },
+      { "year": 2020, "make": "Kubota", "model": "RTV-X1100C", "category": "utility-vehicle", "serial": "KBRTVX1100C31207", "price": 17900, "hours": 412, "condition": "Used" }
+    ]
+  },
+  "ironline": {
+    "brand": "Ironline Equipment Co.",
+    "tagline": "Heavy iron for the high desert",
+    "address": "1855 E Greg St, Sparks, NV 89431",
+    "phone": "(775) 555-0187",
+    "hours": "Mon-Fri 7-5",
+    "overrides": {
+      "B4SK18832": { "status": "SOLD", "sold_label": "SOLD" },
+      "1T0310SLAPF417726": { "status": "SALE_PENDING" },
+      "TB290R29004417": { "status": "MISSING" }
+    },
+    "extras": [
+      { "year": 2019, "make": "Caterpillar", "model": "308 CR", "category": "mini-excavator", "serial": "CAT0308CRFJX00512", "price": 74500, "hours": 3120, "condition": "Used" },
+      { "year": 2016, "make": "John Deere", "model": "644K", "category": "wheel-loader", "serial": "1DW644KXCGF662190", "price": 118000, "hours": 9840, "condition": "Used" }
+    ]
+  },
+  "bayshore": {
+    "brand": "Bayshore Machinery",
+    "tagline": "Compact, access & rental equipment",
+    "address": "2290 Navy Dr, Stockton, CA 95206",
+    "phone": "(209) 555-0119",
+    "hours": "Mon-Sat 6:30-6",
+    "overrides": {
+      "KBKX0404G35529": { "status": "MISSING" },
+      "ST10054-0160099821": { "status": "MISSING" }
+    },
+    "extras": [
+      { "year": 2021, "make": "Genie", "model": "GS-3246", "category": "boom-lift", "serial": "GS4621P-55890", "price": 21800, "hours": 640, "condition": "Rental fleet" },
+      { "year": 2020, "make": "Bobcat", "model": "S650", "category": "skid-steer", "serial": "B3NM19971", "price": 42900, "hours": 2210, "condition": "Used" },
+      { "year": 2022, "make": "Kubota", "model": "U27-4", "category": "mini-excavator", "serial": "KBU274R60318", "price": 46500, "hours": 1180, "condition": "Rental fleet" }
+    ]
+  }
+}

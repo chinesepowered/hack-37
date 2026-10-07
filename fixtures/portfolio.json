@@ -1,0 +1,88 @@
+{
+  "lender": {
+    "name": "Cobalt Credit Partners",
+    "facility": "Equipment floor plan facility FP-2041",
+    "analyst": "Portfolio Ops"
+  },
+  "dealers": [
+    {
+      "id": "valley-ag",
+      "name": "Valley Ag & Turf",
+      "city": "Fresno, CA",
+      "segment": "Agricultural",
+      "principal": "Dale Hutchins",
+      "email": "dale@valleyagturf.example",
+      "phone": "(559) 555-0142",
+      "credit_line": 3000000,
+      "path": "/dealers/valley-ag/"
+    },
+    {
+      "id": "ironline",
+      "name": "Ironline Equipment Co.",
+      "city": "Reno, NV",
+      "segment": "Construction",
+      "principal": "Marisol Vega",
+      "email": "mvega@ironlineequipment.example",
+      "phone": "(775) 555-0187",
+      "credit_line": 2500000,
+      "path": "/dealers/ironline/"
+    },
+    {
+      "id": "bayshore",
+      "name": "Bayshore Machinery",
+      "city": "Stockton, CA",
+      "segment": "Compact & Access",
+      "principal": "Kevin Tran",
+      "email": "kevin@bayshoremachinery.example",
+      "phone": "(209) 555-0119",
+      "credit_line": 2000000,
+      "path": "/dealers/bayshore/"
+    }
+  ],
+  "units": [
+    { "id": "FP-2041-001", "dealer_id": "valley-ag", "year": 2024, "make": "John Deere", "model": "6R 145", "category": "tractor", "serial": "1RW6145RHPA018842", "advance": 178500, "financed_on": "2026-05-12" },
+    { "id": "FP-2041-002", "dealer_id": "valley-ag", "year": 2023, "make": "John Deere", "model": "5075E", "category": "tractor", "serial": "1PY5075EPNN204417", "advance": 52400, "financed_on": "2026-03-02" },
+    { "id": "FP-2041-003", "dealer_id": "valley-ag", "year": 2024, "make": "Kubota", "model": "M7-172", "category": "tractor", "serial": "KBM7172PRE5531086", "advance": 164900, "financed_on": "2026-06-21" },
+    { "id": "FP-2041-004", "dealer_id": "valley-ag", "year": 2024, "make": "Kubota", "model": "L3902", "category": "compact-tractor", "serial": "KBL3902HST72218", "advance": 28700, "financed_on": "2026-07-08" },
+    { "id": "FP-2041-005", "dealer_id": "valley-ag", "year": 2023, "make": "New Holland", "model": "T6.180", "category": "tractor", "serial": "NHT6180ZPRF09163", "advance": 139200, "financed_on": "2026-04-17" },
+    { "id": "FP-2041-006", "dealer_id": "valley-ag", "year": 2024, "make": "Massey Ferguson", "model": "5S.145", "category": "tractor", "serial": "MF5S145DYN40778", "advance": 121800, "financed_on": "2026-06-03" },
+    { "id": "FP-2041-007", "dealer_id": "valley-ag", "year": 2024, "make": "Case IH", "model": "Farmall 75C", "category": "tractor", "serial": "CIH75CFRM3302915", "advance": 49900, "financed_on": "2026-08-14" },
+    { "id": "FP-2041-008", "dealer_id": "valley-ag", "year": 2023, "make": "John Deere", "model": "8R 370", "category": "tractor", "serial": "1RW8370RCPD061528", "advance": 398000, "financed_on": "2026-02-20" },
+    { "id": "FP-2041-009", "dealer_id": "valley-ag", "year": 2024, "make": "Kubota", "model": "RTV-X1140", "category": "utility-vehicle", "serial": "KBRTVX1140W83351", "advance": 21300, "financed_on": "2026-07-29" },
+    { "id": "FP-2041-010", "dealer_id": "valley-ag", "year": 2024, "make": "John Deere", "model": "1025R", "category": "compact-tractor", "serial": "1LV1025RJRJ117304", "advance": 26100, "financed_on": "2026-08-02" },
+    { "id": "FP-2041-011", "dealer_id": "valley-ag", "year": 2023, "make": "Mahindra", "model": "6075", "category": "tractor", "serial": "MHN6075PST26640", "advance": 44800, "financed_on": "2026-05-26" },
+    { "id": "FP-2041-012", "dealer_id": "valley-ag", "year": 2024, "make": "Kubota", "model": "BX2380", "category": "compact-tractor", "serial": "KBBX2380TV91475", "advance": 19600, "financed_on": "2026-09-01" },
+    { "id": "FP-2041-013", "dealer_id": "valley-ag", "year": 2024, "make": "New Holland", "model": "Workmaster 75", "category": "tractor", "serial": "NHWM75HZR207539", "advance": 47300, "financed_on": "2026-06-30" },
+    { "id": "FP-2041-014", "dealer_id": "valley-ag", "year": 2023, "make": "Case IH", "model": "Magnum 340", "category": "tractor", "serial": "CIHMAG340JJF41207", "advance": 356000, "financed_on": "2026-01-15" },
+    { "id": "FP-2041-015", "dealer_id": "valley-ag", "year": 2024, "make": "John Deere", "model": "3038E", "category": "compact-tractor", "serial": "1LV3038EVRH140962", "advance": 31200, "financed_on": "2026-08-22" },
+
+    { "id": "FP-2041-016", "dealer_id": "ironline", "year": 2023, "make": "Caterpillar", "model": "320 GC", "category": "excavator", "serial": "CAT0320GCZBK01277", "advance": 212000, "financed_on": "2026-03-11" },
+    { "id": "FP-2041-017", "dealer_id": "ironline", "year": 2024, "make": "Caterpillar", "model": "259D3", "category": "track-loader", "serial": "CAT259D3FTL20581", "advance": 68900, "financed_on": "2026-06-09" },
+    { "id": "FP-2041-018", "dealer_id": "ironline", "year": 2023, "make": "Komatsu", "model": "PC210LC-11", "category": "excavator", "serial": "KMTPC210V55A39014", "advance": 224500, "financed_on": "2026-02-27" },
+    { "id": "FP-2041-019", "dealer_id": "ironline", "year": 2024, "make": "Bobcat", "model": "T66", "category": "track-loader", "serial": "B4SK18832", "advance": 71400, "financed_on": "2026-07-14" },
+    { "id": "FP-2041-020", "dealer_id": "ironline", "year": 2024, "make": "Bobcat", "model": "E35", "category": "mini-excavator", "serial": "B4H213560", "advance": 54200, "financed_on": "2026-05-05" },
+    { "id": "FP-2041-021", "dealer_id": "ironline", "year": 2023, "make": "John Deere", "model": "310SL", "category": "backhoe", "serial": "1T0310SLAPF417726", "advance": 118600, "financed_on": "2026-04-02" },
+    { "id": "FP-2041-022", "dealer_id": "ironline", "year": 2024, "make": "Case", "model": "580SN", "category": "backhoe", "serial": "JJGN580SNRC786120", "advance": 112300, "financed_on": "2026-06-18" },
+    { "id": "FP-2041-023", "dealer_id": "ironline", "year": 2023, "make": "Volvo", "model": "EC220E", "category": "excavator", "serial": "VCEC220EV00360144", "advance": 205700, "financed_on": "2026-01-28" },
+    { "id": "FP-2041-024", "dealer_id": "ironline", "year": 2024, "make": "Takeuchi", "model": "TB290", "category": "mini-excavator", "serial": "TB290R29004417", "advance": 96800, "financed_on": "2026-07-21" },
+    { "id": "FP-2041-025", "dealer_id": "ironline", "year": 2023, "make": "Caterpillar", "model": "926M", "category": "wheel-loader", "serial": "CAT0926MCLWB00938", "advance": 189400, "financed_on": "2026-03-30" },
+    { "id": "FP-2041-026", "dealer_id": "ironline", "year": 2024, "make": "Kubota", "model": "SVL75-2", "category": "track-loader", "serial": "KBSVL752C40871", "advance": 62700, "financed_on": "2026-08-06" },
+    { "id": "FP-2041-027", "dealer_id": "ironline", "year": 2024, "make": "JCB", "model": "3CX", "category": "backhoe", "serial": "JCB3CX14C03121987", "advance": 109900, "financed_on": "2026-05-19" },
+    { "id": "FP-2041-028", "dealer_id": "ironline", "year": 2023, "make": "Hyundai", "model": "HX220L", "category": "excavator", "serial": "HHKHX220LN0002563", "advance": 171200, "financed_on": "2026-02-12" },
+    { "id": "FP-2041-029", "dealer_id": "ironline", "year": 2024, "make": "Bobcat", "model": "S76", "category": "skid-steer", "serial": "B4GG20194", "advance": 58300, "financed_on": "2026-08-25" },
+
+    { "id": "FP-2041-030", "dealer_id": "bayshore", "year": 2024, "make": "JLG", "model": "1055", "category": "telehandler", "serial": "JLG0160118274", "advance": 132400, "financed_on": "2026-04-23" },
+    { "id": "FP-2041-031", "dealer_id": "bayshore", "year": 2023, "make": "Genie", "model": "GTH-5519", "category": "telehandler", "serial": "GTH5519P-41982", "advance": 98700, "financed_on": "2026-03-16" },
+    { "id": "FP-2041-032", "dealer_id": "bayshore", "year": 2024, "make": "Kubota", "model": "KX040-4", "category": "mini-excavator", "serial": "KBKX0404G35529", "advance": 67800, "financed_on": "2026-06-11" },
+    { "id": "FP-2041-033", "dealer_id": "bayshore", "year": 2024, "make": "Takeuchi", "model": "TL8R2", "category": "track-loader", "serial": "TL8R2208113862", "advance": 79500, "financed_on": "2026-07-03" },
+    { "id": "FP-2041-034", "dealer_id": "bayshore", "year": 2023, "make": "Bobcat", "model": "E50", "category": "mini-excavator", "serial": "B3Y511873", "advance": 71900, "financed_on": "2026-02-08" },
+    { "id": "FP-2041-035", "dealer_id": "bayshore", "year": 2024, "make": "Caterpillar", "model": "299D3 XE", "category": "track-loader", "serial": "CAT299D3XEFD03341", "advance": 104200, "financed_on": "2026-05-28" },
+    { "id": "FP-2041-036", "dealer_id": "bayshore", "year": 2024, "make": "John Deere", "model": "333G", "category": "track-loader", "serial": "1T0333GMTPJ448210", "advance": 97600, "financed_on": "2026-06-25" },
+    { "id": "FP-2041-037", "dealer_id": "bayshore", "year": 2023, "make": "SkyTrak", "model": "10054", "category": "telehandler", "serial": "ST10054-0160099821", "advance": 126900, "financed_on": "2026-03-04" },
+    { "id": "FP-2041-038", "dealer_id": "bayshore", "year": 2024, "make": "Toro", "model": "Dingo TX 1000", "category": "compact-utility", "serial": "TORO22323-41509", "advance": 34800, "financed_on": "2026-08-19" },
+    { "id": "FP-2041-039", "dealer_id": "bayshore", "year": 2024, "make": "Wacker Neuson", "model": "ET42", "category": "mini-excavator", "serial": "WNCET42PC0331704", "advance": 63500, "financed_on": "2026-07-17" },
+    { "id": "FP-2041-040", "dealer_id": "bayshore", "year": 2023, "make": "JLG", "model": "600S", "category": "boom-lift", "serial": "JLG0300266415", "advance": 118300, "financed_on": "2026-01-30" },
+    { "id": "FP-2041-041", "dealer_id": "bayshore", "year": 2024, "make": "Develon", "model": "DX35-5", "category": "mini-excavator", "serial": "DWGDX355K10928", "advance": 49700, "financed_on": "2026-08-28" },
+    { "id": "FP-2041-042", "dealer_id": "bayshore", "year": 2024, "make": "Genie", "model": "S-65", "category": "boom-lift", "serial": "S6524P-77016", "advance": 121600, "financed_on": "2026-05-08" }
+  ]
+}

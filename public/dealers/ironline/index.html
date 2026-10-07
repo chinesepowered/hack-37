@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ironline Equipment Co. | Equipment Inventory</title>
+<meta name="description" content="Ironline Equipment Co. - Heavy iron for the high desert. New and used equipment inventory.">
+<style>
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+a{color:inherit}
+.wrap{max-width:1220px;margin:0 auto;padding:0 16px}
+.topbar .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;padding-top:6px;padding-bottom:6px}
+.masthead .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:16px;padding-bottom:16px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none;min-width:0}
+.logo svg{flex:none;display:block}
+.brandtext{display:flex;flex-direction:column;min-width:0}
+.mainnav ul{list-style:none;margin:0 auto;padding:0 16px;display:flex;flex-wrap:wrap;max-width:1220px}
+.mainnav a{display:block;text-decoration:none}
+.promo{text-align:center;padding:8px 16px}
+main.wrap{padding-top:14px;padding-bottom:30px}
+.crumbs{font-size:12px;margin-bottom:6px}
+h1{margin:4px 0 8px}
+.intro{margin:0 0 14px;max-width:820px}
+.filters{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:flex-end;padding:11px 13px;margin:0 0 12px}
+.filters label{display:flex;flex-direction:column;gap:3px;font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:.4px}
+.filters select,.filters input{font:inherit;font-size:13px;padding:6px 7px;min-width:170px;max-width:100%;color:#222}
+.filters .grow{flex:1 1 200px}.filters .grow input{width:100%}
+.filters button{font:inherit;font-size:13px;font-weight:bold;padding:7px 18px;cursor:pointer}
+.resultbar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px;font-size:12px;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.unit{position:relative;background:#fff;display:flex;flex-direction:column;min-width:0}
+.ph{position:relative;aspect-ratio:12/7;overflow:hidden}
+.ph svg.eq{display:block;width:100%;height:100%}
+.unit[data-status="SOLD"] .ph svg.eq{filter:grayscale(.75) opacity(.7)}
+.tag{position:absolute;top:8px;right:8px;font-size:11px;font-weight:bold;padding:2px 7px;letter-spacing:.3px}
+.stock{position:absolute;left:8px;bottom:6px;font-size:10px;color:rgba(0,0,0,.45)}
+.sold-ribbon{position:absolute;left:-25%;right:-25%;top:50%;transform:translateY(-50%) rotate(-17deg);background:#d0191f;color:#fff;text-align:center;font:900 40px/1.35 Impact,"Arial Black","Liberation Sans",Arial,sans-serif;letter-spacing:10px;text-indent:10px;border-top:3px solid #fff;border-bottom:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.35);text-shadow:0 2px 0 rgba(0,0,0,.25)}
+.pending-badge{position:absolute;top:10px;left:10px;background:#f5a300;color:#231a00;font:900 13px/1 Arial,"Liberation Sans",sans-serif;letter-spacing:.8px;padding:7px 10px;border:2px solid #fff;border-radius:3px;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.info{padding:11px 13px 13px;display:flex;flex-direction:column;flex:1}
+.title{margin:0 0 3px}
+.cat{font-size:11px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px}
+.specs{list-style:none;margin:0 0 10px;padding:0;font-size:12.5px}
+.specs li{padding:3px 0;overflow-wrap:anywhere}
+.serial{font-family:"Courier New","Liberation Mono","DejaVu Sans Mono",monospace;font-size:12.5px;font-weight:bold;color:#111;background:#f1f1ec;padding:0 4px;border-radius:2px;letter-spacing:.2px}
+.pricebox{margin-top:auto}
+.price{margin:2px 0 2px}
+.price.sold{color:#d0191f;letter-spacing:1px}
+.pending-note{font-size:12px;font-weight:bold;color:#a86b00;margin-bottom:2px}
+.finance-note{font-size:11.5px;margin-bottom:9px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-block;font-size:12px;padding:6px 12px;text-decoration:none;cursor:pointer}
+.cta{margin-top:26px;padding:16px 20px;font-size:14px}
+footer{font-size:12.5px;padding:24px 0 14px}
+footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px 28px}
+footer h4{margin:0 0 8px;font-size:14px}
+footer p{margin:0 0 6px}
+footer .legal{margin-top:18px;padding-top:12px;border-top:1px solid rgba(255,255,255,.15);font-size:11.5px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px}
+@media (max-width:640px){.contact{text-align:left!important}.mainnav a{padding:9px 11px!important;font-size:12px!important}.brand{font-size:24px!important}h1{font-size:21px!important}.filters select,.filters input{min-width:0;width:100%}.filters label{flex:1 1 100%}}
+
+body{background:#d7d8d9;font:14px/1.45 Arial,"Liberation Sans",Helvetica,sans-serif;color:#222}
+.hazard{height:9px;background:repeating-linear-gradient(-45deg,#f47b20 0 14px,#1d1d1d 14px 28px)}
+.topbar{background:#1d1d1d;color:#aaa;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.topbar a{color:#f47b20}
+.masthead{background:linear-gradient(#35383b,#222426);color:#ccc}
+.brand{font:900 32px/1 "Arial Black",Impact,"Liberation Sans",Arial,sans-serif;color:#fff;text-transform:uppercase;letter-spacing:.5px}
+.tagline{color:#f47b20;text-transform:uppercase;letter-spacing:2.5px;font-size:12px;font-weight:bold;margin-top:4px}
+.contact{text-align:right;font-size:12px;color:#bbb;text-transform:uppercase}
+.contact .phone{display:block;color:#f47b20;font:900 26px "Arial Black","Liberation Sans",Arial,sans-serif;letter-spacing:.5px}
+.mainnav{background:#f47b20;border-top:1px solid #ff9d55;border-bottom:3px solid #b5570f}
+.mainnav a{color:#fff;font-weight:bold;text-transform:uppercase;letter-spacing:.6px;padding:12px 19px;font-size:13px;border-right:1px solid #d76510}
+.mainnav a:hover{background:#d96812}
+.mainnav a.active{background:#1d1d1d}
+.promo{background:#2b2d2f;color:#f0f0f0;font-size:12px;letter-spacing:.6px}
+main{background:#f2f2f2}
+.crumbs{color:#777;text-transform:uppercase;font-size:11px}.crumbs a{color:#b5570f}
+h1{font:900 26px "Arial Black","Liberation Sans",Arial,sans-serif;text-transform:uppercase;color:#1d1d1d;border-left:8px solid #f47b20;padding-left:12px}
+.filters{background:#2b2d2f;color:#ddd;border:0}
+.filters label{color:#ccc}
+.filters select,.filters input{border:1px solid #555;border-radius:0;background:#fff}
+.filters button{background:#f47b20;color:#fff;border:0;border-radius:0;text-transform:uppercase}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:22px;align-items:start}
+.side .box{background:#fff;border:1px solid #c4c4c4;border-top:4px solid #f47b20;padding:12px 14px;margin-bottom:16px;font-size:13px}
+.side .box.dark{background:#2b2d2f;color:#ddd;border-color:#2b2d2f;border-top-color:#f47b20}
+.side h3{margin:0 0 8px;font:900 15px "Arial Black","Liberation Sans",Arial,sans-serif;text-transform:uppercase}
+.side ul{margin:0;padding-left:18px}
+.side p{margin:0 0 10px}
+.unit{border:1px solid #bdbdbd;border-top:4px solid #f47b20}
+.ph{background:linear-gradient(#f4f1ec,#e3ddd2);border-bottom:1px solid #ccc}
+.title{font:bold 16px/1.25 Arial,"Liberation Sans",sans-serif;text-transform:uppercase;color:#1d1d1d}
+.cat{color:#b5570f;font-weight:bold}
+.specs li{border-bottom:1px solid #e3e3e3}
+.price{font:900 23px "Arial Black","Liberation Sans",Arial,sans-serif;color:#1d1d1d}
+.btn{background:#f47b20;color:#fff;border:0;text-transform:uppercase;font-weight:bold}
+.btn.alt{background:#2b2d2f;color:#fff}
+.tag{background:#1d1d1d;color:#f47b20}
+.finance-note{color:#b5570f}
+.cta{background:#1d1d1d;color:#eee;border-left:8px solid #f47b20}
+.cta b{color:#f47b20}
+footer{background:#1d1d1d;color:#aaa;border-top:6px solid #f47b20}
+footer h4{color:#f47b20;text-transform:uppercase;letter-spacing:1px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body class="dealer-ironline">
+<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><symbol id="gnd" viewBox="0 0 240 140"><path d="M0 124V104L34 84L58 98L96 70L128 94L160 80L196 100L222 90L240 98V124Z" fill="#d9d2c6" opacity=".9"/><path d="M0 124V114L60 106L120 113L180 104L240 112V124Z" fill="#d6c8ae"/><rect y="124" width="240" height="16" fill="#c8b79a"/><rect y="124" width="240" height="1.6" fill="#a8936f"/><ellipse cx="120" cy="124.5" rx="98" ry="4.5" fill="#000" opacity=".16"/></symbol><symbol id="eq-tractor" viewBox="0 0 240 140"><rect x="56" y="88" width="96" height="10" fill="#2a2c2e"/><path d="M38 96V72Q38 63 47 62L136 57V96Z" fill="#f07a1a"/><path d="M38 70H45V94H38Z" fill="#2a2c2e" opacity=".6"/><path d="M48 66L132 61.5V64.5L48 69Z" fill="#fff" opacity=".2"/><rect x="39" y="63.5" width="6" height="4" rx="1" fill="#ffe7a1"/><rect x="104" y="31" width="5" height="28" fill="#2a2c2e"/><rect x="102" y="28" width="9" height="4" rx="1" fill="#2a2c2e"/><path d="M130 98V56H180V98Z" fill="#f07a1a"/><path d="M134 25H200L203 62H131Z" fill="#c9dbe4"/><path d="M140 28H160L158 40H139Z" fill="#fff" opacity=".35"/><rect x="129" y="24" width="5" height="40" fill="#f07a1a"/><rect x="165" y="25" width="3" height="37" fill="#f07a1a"/><rect x="199" y="24" width="5" height="40" fill="#f07a1a"/><path d="M123 18H208Q212 18 212 22V26H123Z" fill="#f07a1a"/><rect x="123" y="25" width="89" height="2" fill="#2a2c2e" opacity=".45"/><circle cx="64" cy="103" r="21" fill="#25282b"/><circle cx="64" cy="103" r="19.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="64" cy="103" r="11.8" fill="#3a3d40"/><circle cx="64" cy="103" r="11.8" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="64" cy="103" r="3.8" fill="#2a2c2e"/><circle cx="170" cy="91" r="33" fill="#25282b"/><circle cx="170" cy="91" r="31.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="170" cy="91" r="18.5" fill="#3a3d40"/><circle cx="170" cy="91" r="18.5" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="170" cy="91" r="5.9" fill="#2a2c2e"/><path d="M127 92 A43 43 0 0 1 213 92 H206 A36 36 0 0 0 134 92 Z" fill="#f07a1a"/></symbol><symbol id="eq-compact-tractor" viewBox="0 0 240 140"><rect x="70" y="96" width="92" height="8" fill="#2a2c2e"/><path d="M58 102V83Q58 76 65 75L140 71V102Z" fill="#f07a1a"/><path d="M58 81H63V99H58Z" fill="#2a2c2e" opacity=".6"/><path d="M66 78L136 74.5V77L66 80.5Z" fill="#fff" opacity=".2"/><path d="M136 102V70H180V102Z" fill="#f07a1a"/><rect x="164" y="46" width="7" height="24" rx="2" fill="#25282b"/><rect x="148" y="64" width="23" height="6" rx="2" fill="#25282b"/><path d="M138 72L146 58" stroke="#25282b" stroke-width="3" stroke-linecap="round"/><ellipse cx="146" cy="57" rx="7" ry="2" fill="#25282b"/><rect x="178" y="24" width="6" height="76" rx="2" fill="#25282b"/><rect x="174" y="22" width="14" height="5" rx="2" fill="#25282b"/><rect x="116" y="62" width="10" height="38" fill="#f07a1a"/><rect x="116" y="62" width="10" height="38" fill="#2a2c2e" opacity=".25"/><path d="M120 90L88 79" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M124 65L100 61L56 101" fill="none" stroke="#f07a1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M30 96Q27 110 33 122L60 121L58 97Z" fill="#5b6167"/><rect x="32" y="119" width="28" height="3" fill="#2a2c2e"/><circle cx="82" cy="108" r="16" fill="#25282b"/><circle cx="82" cy="108" r="14.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="82" cy="108" r="9.0" fill="#3a3d40"/><circle cx="82" cy="108" r="9.0" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="82" cy="108" r="2.9" fill="#2a2c2e"/><circle cx="170" cy="99" r="25" fill="#25282b"/><circle cx="170" cy="99" r="23.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="170" cy="99" r="14.0" fill="#3a3d40"/><circle cx="170" cy="99" r="14.0" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="170" cy="99" r="4.5" fill="#2a2c2e"/><path d="M138 100 A32 32 0 0 1 202 100 H197 A27 27 0 0 0 143 100 Z" fill="#f07a1a"/></symbol><symbol id="eq-utility-vehicle" viewBox="0 0 240 140"><rect x="52" y="97" width="150" height="9" fill="#2a2c2e"/><path d="M38 103V93Q38 83 50 81L104 78L110 103Z" fill="#f07a1a"/><path d="M50 85L102 82.5V85L50 87.5Z" fill="#fff" opacity=".2"/><rect x="39" y="87" width="6" height="4" rx="1" fill="#ffe7a1"/><path d="M104 103L110 78H150V103Z" fill="#f07a1a"/><path d="M104 103L110 78H150V103Z" fill="#2a2c2e" opacity=".25"/><rect x="127" y="56" width="7" height="22" rx="2" fill="#25282b"/><rect x="114" y="73" width="22" height="6" rx="2" fill="#25282b"/><path d="M110 77L117 63" stroke="#25282b" stroke-width="3" stroke-linecap="round"/><path d="M104 80L117 32H158L151 77" fill="none" stroke="#25282b" stroke-width="4.5" stroke-linejoin="round"/><rect x="111" y="27" width="53" height="6" rx="2" fill="#f07a1a"/><path d="M146 76H214V103H146Z" fill="#f07a1a"/><rect x="146" y="73" width="68" height="4" fill="#2a2c2e"/><rect x="150" y="82" width="60" height="3" fill="#fff" opacity=".2"/><circle cx="70" cy="108" r="16" fill="#25282b"/><circle cx="70" cy="108" r="14.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="70" cy="108" r="9.0" fill="#3a3d40"/><circle cx="70" cy="108" r="9.0" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="70" cy="108" r="2.9" fill="#2a2c2e"/><circle cx="180" cy="108" r="16" fill="#25282b"/><circle cx="180" cy="108" r="14.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="180" cy="108" r="9.0" fill="#3a3d40"/><circle cx="180" cy="108" r="9.0" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="180" cy="108" r="2.9" fill="#2a2c2e"/></symbol><symbol id="eq-excavator" viewBox="0 0 240 140"><rect x="48" y="100" width="146" height="24" rx="12" fill="#25282b"/><rect x="51" y="103" width="140" height="18" rx="9" fill="#3b3f43"/><line x1="60" y1="122.6" x2="182" y2="122.6" stroke="#4a4f54" stroke-width="2.6" stroke-dasharray="3 3"/><circle cx="60.0" cy="112" r="8" fill="#5d6268"/><circle cx="60.0" cy="112" r="2" fill="#25282b"/><circle cx="84.4" cy="112" r="5.5" fill="#5d6268"/><circle cx="84.4" cy="112" r="2" fill="#25282b"/><circle cx="108.8" cy="112" r="5.5" fill="#5d6268"/><circle cx="108.8" cy="112" r="2" fill="#25282b"/><circle cx="133.2" cy="112" r="5.5" fill="#5d6268"/><circle cx="133.2" cy="112" r="2" fill="#25282b"/><circle cx="157.6" cy="112" r="5.5" fill="#5d6268"/><circle cx="157.6" cy="112" r="2" fill="#25282b"/><circle cx="182.0" cy="112" r="8" fill="#5d6268"/><circle cx="182.0" cy="112" r="2" fill="#25282b"/><rect x="96" y="93" width="76" height="9" fill="#2a2c2e"/><path d="M132 74Q124 24 74 21" fill="none" stroke="#f07a1a" stroke-width="13" stroke-linecap="round"/><path d="M124 70L104 38" stroke="#c9ced3" stroke-width="3.5" stroke-linecap="round"/><path d="M74 21L42 88" stroke="#f07a1a" stroke-width="9" stroke-linecap="round"/><path d="M86 24L62 58" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M29 84L56 90L52 109Q43 119 31 113Q25 99 29 84Z" fill="#5b6167"/><path d="M31 113L27 117M37 116L34 120M44 116L42 120" stroke="#2a2c2e" stroke-width="2.5"/><path d="M82 96V74Q82 70 86 70H188Q202 70 202 84V96Z" fill="#f07a1a"/><path d="M178 70H188Q202 70 202 84V96H178Z" fill="#2a2c2e" opacity=".3"/><rect x="150" y="76" width="22" height="2.5" fill="#2a2c2e" opacity=".45"/><rect x="150" y="81" width="22" height="2.5" fill="#2a2c2e" opacity=".45"/><path d="M84 72V38Q84 34 88 34H113L120 72Z" fill="#f07a1a"/><path d="M89 40H109L115 69H89Z" fill="#c9dbe4"/><path d="M91 42H101L99 52H91Z" fill="#fff" opacity=".35"/></symbol><symbol id="eq-mini-excavator" viewBox="0 0 240 140"><rect x="66" y="106" width="104" height="18" rx="9" fill="#25282b"/><rect x="69" y="109" width="98" height="12" rx="6" fill="#3b3f43"/><line x1="75" y1="122.6" x2="161" y2="122.6" stroke="#4a4f54" stroke-width="2.6" stroke-dasharray="3 3"/><circle cx="75.0" cy="115" r="5" fill="#5d6268"/><circle cx="75.0" cy="115" r="2" fill="#25282b"/><circle cx="103.7" cy="115" r="2.5" fill="#5d6268"/><circle cx="103.7" cy="115" r="2" fill="#25282b"/><circle cx="132.3" cy="115" r="2.5" fill="#5d6268"/><circle cx="132.3" cy="115" r="2" fill="#25282b"/><circle cx="161.0" cy="115" r="5" fill="#5d6268"/><circle cx="161.0" cy="115" r="2" fill="#25282b"/><path d="M50 104H63V122Q57 124 50 122Z" fill="#5b6167"/><rect x="60" y="108" width="12" height="5" fill="#2a2c2e"/><rect x="92" y="99" width="62" height="8" fill="#2a2c2e"/><path d="M90 92Q84 46 62 40" fill="none" stroke="#f07a1a" stroke-width="9" stroke-linecap="round"/><path d="M86 82L78 56" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M62 40L40 94" stroke="#f07a1a" stroke-width="6.5" stroke-linecap="round"/><path d="M28 88L50 94L46 111Q38 118 30 112Q24 100 28 88Z" fill="#5b6167"/><path d="M84 103V85Q84 80 89 80H160Q172 80 172 92V103Z" fill="#f07a1a"/><path d="M160 80Q172 80 172 92V103H158V80Z" fill="#2a2c2e" opacity=".3"/><rect x="104" y="40" width="3.5" height="42" fill="#25282b"/><rect x="147" y="40" width="3.5" height="42" fill="#25282b"/><path d="M98 35H157Q160 35 160 38V43H98Z" fill="#f07a1a"/><rect x="129" y="60" width="7" height="20" rx="2" fill="#25282b"/><rect x="116" y="74" width="21" height="6" rx="2" fill="#25282b"/><rect x="111" y="66" width="4" height="13" fill="#25282b"/></symbol><symbol id="eq-track-loader" viewBox="0 0 240 140"><rect x="70" y="104" width="112" height="20" rx="10" fill="#25282b"/><rect x="73" y="107" width="106" height="14" rx="7" fill="#3b3f43"/><line x1="80" y1="122.6" x2="172" y2="122.6" stroke="#4a4f54" stroke-width="2.6" stroke-dasharray="3 3"/><circle cx="80.0" cy="114" r="6" fill="#5d6268"/><circle cx="80.0" cy="114" r="2" fill="#25282b"/><circle cx="103.0" cy="114" r="3.5" fill="#5d6268"/><circle cx="103.0" cy="114" r="2" fill="#25282b"/><circle cx="126.0" cy="114" r="3.5" fill="#5d6268"/><circle cx="126.0" cy="114" r="2" fill="#25282b"/><circle cx="149.0" cy="114" r="3.5" fill="#5d6268"/><circle cx="149.0" cy="114" r="2" fill="#25282b"/><circle cx="172.0" cy="114" r="6" fill="#5d6268"/><circle cx="172.0" cy="114" r="2" fill="#25282b"/><path d="M78 106V70H174Q184 70 184 80V106Z" fill="#f07a1a"/><rect x="166" y="78" width="14" height="18" rx="2" fill="#2a2c2e" opacity=".35"/><path d="M90 72V30Q90 26 94 26H136L144 72Z" fill="#2a2c2e"/><path d="M96 32H132L138 70H96Z" fill="#c9dbe4"/><path d="M98 34H112L110 46H98Z" fill="#fff" opacity=".35"/><path d="M108 32V70M120 32V70" stroke="#2a2c2e" stroke-opacity=".35" stroke-width="1.5"/><path d="M150 88L128 50" stroke="#c9ced3" stroke-width="3.5" stroke-linecap="round"/><path d="M174 70L162 36L124 38L66 88" fill="none" stroke="#f07a1a" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/><path d="M32 80H68L70 118L32 122Q26 100 32 80Z" fill="#5b6167"/><rect x="30" y="118" width="40" height="4" fill="#2a2c2e"/></symbol><symbol id="eq-skid-steer" viewBox="0 0 240 140"><path d="M78 100V70H174Q184 70 184 80V100Z" fill="#f07a1a"/><rect x="166" y="78" width="14" height="18" rx="2" fill="#2a2c2e" opacity=".35"/><path d="M90 72V30Q90 26 94 26H136L144 72Z" fill="#2a2c2e"/><path d="M96 32H132L138 70H96Z" fill="#c9dbe4"/><path d="M98 34H112L110 46H98Z" fill="#fff" opacity=".35"/><path d="M108 32V70M120 32V70" stroke="#2a2c2e" stroke-opacity=".35" stroke-width="1.5"/><path d="M150 88L128 50" stroke="#c9ced3" stroke-width="3.5" stroke-linecap="round"/><path d="M174 70L162 36L124 38L66 88" fill="none" stroke="#f07a1a" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/><path d="M32 80H68L70 118L32 122Q26 100 32 80Z" fill="#5b6167"/><rect x="30" y="118" width="40" height="4" fill="#2a2c2e"/><circle cx="100" cy="106" r="18" fill="#25282b"/><circle cx="100" cy="106" r="16.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="100" cy="106" r="10.1" fill="#3a3d40"/><circle cx="100" cy="106" r="10.1" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="100" cy="106" r="3.2" fill="#2a2c2e"/><circle cx="160" cy="106" r="18" fill="#25282b"/><circle cx="160" cy="106" r="16.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="160" cy="106" r="10.1" fill="#3a3d40"/><circle cx="160" cy="106" r="10.1" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="160" cy="106" r="3.2" fill="#2a2c2e"/></symbol><symbol id="eq-backhoe" viewBox="0 0 240 140"><rect x="64" y="92" width="122" height="10" fill="#2a2c2e"/><path d="M58 100V80Q58 72 66 72L118 70V100Z" fill="#f07a1a"/><path d="M58 78H63V98H58Z" fill="#2a2c2e" opacity=".6"/><path d="M66 75.5L116 73.5V76L66 78Z" fill="#fff" opacity=".2"/><rect x="100" y="46" width="4" height="25" fill="#2a2c2e"/><path d="M114 100V66H186V100Z" fill="#f07a1a"/><path d="M122 30H176L180 66H120Z" fill="#c9dbe4"/><path d="M126 33H144L142 44H125Z" fill="#fff" opacity=".35"/><rect x="118" y="28" width="5" height="40" fill="#f07a1a"/><rect x="176" y="28" width="5" height="40" fill="#f07a1a"/><path d="M112 22H186Q189 22 189 25V30H112Z" fill="#f07a1a"/><path d="M120 74L94 70L46 98" fill="none" stroke="#f07a1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M18 90Q15 106 21 120L50 119L48 92Z" fill="#5b6167"/><rect x="20" y="117" width="30" height="3" fill="#2a2c2e"/><path d="M186 92L194 121H206L198 92Z" fill="#2a2c2e"/><path d="M186 84Q202 34 220 30" fill="none" stroke="#f07a1a" stroke-width="8" stroke-linecap="round"/><path d="M196 70L210 40" stroke="#c9ced3" stroke-width="2.5" stroke-linecap="round"/><path d="M220 30L226 92" stroke="#f07a1a" stroke-width="6" stroke-linecap="round"/><path d="M216 88L234 91Q237 105 229 113L215 106Z" fill="#5b6167"/><circle cx="80" cy="107" r="17" fill="#25282b"/><circle cx="80" cy="107" r="15.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="80" cy="107" r="9.5" fill="#3a3d40"/><circle cx="80" cy="107" r="9.5" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="80" cy="107" r="3.1" fill="#2a2c2e"/><circle cx="156" cy="97" r="27" fill="#25282b"/><circle cx="156" cy="97" r="25.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="156" cy="97" r="15.1" fill="#3a3d40"/><circle cx="156" cy="97" r="15.1" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="156" cy="97" r="4.9" fill="#2a2c2e"/><path d="M122 98 A34 34 0 0 1 190 98 H185 A29 29 0 0 0 127 98 Z" fill="#f07a1a"/></symbol><symbol id="eq-wheel-loader" viewBox="0 0 240 140"><path d="M58 98V78H120V98Z" fill="#f07a1a"/><rect x="110" y="82" width="12" height="14" fill="#2a2c2e"/><path d="M114 100V64H204Q212 64 212 74V100Z" fill="#f07a1a"/><path d="M200 64Q212 64 212 74V100H200Z" fill="#2a2c2e" opacity=".3"/><rect x="186" y="70" width="10" height="22" rx="2" fill="#2a2c2e" opacity=".35"/><rect x="176" y="46" width="5" height="19" fill="#2a2c2e"/><path d="M116 66V26Q116 22 120 22H156L162 66Z" fill="#f07a1a"/><path d="M121 28H153L158 64H121Z" fill="#c9dbe4"/><path d="M123 30H137L135 42H123Z" fill="#fff" opacity=".35"/><path d="M112 56L62 74" stroke="#2a2c2e" stroke-width="4" stroke-linecap="round"/><path d="M120 72L50 84" stroke="#f07a1a" stroke-width="10" stroke-linecap="round"/><path d="M10 64Q3 92 14 120L54 118L52 70Q30 61 10 64Z" fill="#5b6167"/><rect x="12" y="117" width="42" height="4" fill="#2a2c2e"/><circle cx="78" cy="98" r="26" fill="#25282b"/><circle cx="78" cy="98" r="24.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="78" cy="98" r="14.6" fill="#3a3d40"/><circle cx="78" cy="98" r="14.6" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="78" cy="98" r="4.7" fill="#2a2c2e"/><circle cx="168" cy="98" r="26" fill="#25282b"/><circle cx="168" cy="98" r="24.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="168" cy="98" r="14.6" fill="#3a3d40"/><circle cx="168" cy="98" r="14.6" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="168" cy="98" r="4.7" fill="#2a2c2e"/><path d="M45 99 A33 33 0 0 1 111 99 H106 A28 28 0 0 0 50 99 Z" fill="#f07a1a"/><path d="M135 99 A33 33 0 0 1 201 99 H196 A28 28 0 0 0 140 99 Z" fill="#f07a1a"/></symbol><symbol id="eq-telehandler" viewBox="0 0 240 140"><path d="M100 47L33 29" stroke="#5b6167" stroke-width="9" stroke-linecap="round"/><path d="M204 79L72 41" stroke="#f07a1a" stroke-width="15" stroke-linecap="round"/><path d="M150 86L122 58" stroke="#c9ced3" stroke-width="4" stroke-linecap="round"/><rect x="22" y="26" width="8" height="42" rx="1" fill="#2a2c2e"/><rect x="4" y="64" width="26" height="4" fill="#2a2c2e"/><path d="M42 104V90Q42 86 46 86H200Q206 86 206 92V104Z" fill="#f07a1a"/><rect x="46" y="90" width="156" height="3" fill="#fff" opacity=".2"/><path d="M86 88V46Q86 42 90 42H116L122 88Z" fill="#f07a1a"/><path d="M91 48H113L118 86H91Z" fill="#c9dbe4"/><path d="M93 50H104L102 62H93Z" fill="#fff" opacity=".35"/><circle cx="66" cy="105" r="19" fill="#25282b"/><circle cx="66" cy="105" r="17.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="66" cy="105" r="10.6" fill="#3a3d40"/><circle cx="66" cy="105" r="10.6" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="66" cy="105" r="3.4" fill="#2a2c2e"/><circle cx="176" cy="105" r="19" fill="#25282b"/><circle cx="176" cy="105" r="17.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="176" cy="105" r="10.6" fill="#3a3d40"/><circle cx="176" cy="105" r="10.6" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="176" cy="105" r="3.4" fill="#2a2c2e"/></symbol><symbol id="eq-boom-lift" viewBox="0 0 240 140"><path d="M70 36L46 14" stroke="#5b6167" stroke-width="7" stroke-linecap="round"/><path d="M46 16L44 26" stroke="#2a2c2e" stroke-width="4"/><rect x="12" y="26" width="40" height="4" fill="#2a2c2e"/><path d="M14 26V10H50V26M14 18H50M32 10V26" fill="none" stroke="#25282b" stroke-width="2.2"/><rect x="14" y="20" width="36" height="6" fill="#f07a1a" opacity=".85"/><path d="M114 76L70 36" stroke="#f07a1a" stroke-width="10" stroke-linecap="round"/><path d="M128 80L100 60" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M100 95V77Q100 72 105 72H170Q177 72 177 79V95Z" fill="#f07a1a"/><path d="M156 72H170Q177 72 177 79V95H156Z" fill="#2a2c2e" opacity=".3"/><circle cx="114" cy="76" r="6" fill="#2a2c2e"/><rect x="54" y="94" width="132" height="16" rx="3" fill="#f07a1a"/><rect x="54" y="106" width="132" height="4" fill="#2a2c2e" opacity=".35"/><circle cx="78" cy="110" r="14" fill="#25282b"/><circle cx="78" cy="110" r="12.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="78" cy="110" r="7.8" fill="#3a3d40"/><circle cx="78" cy="110" r="7.8" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="78" cy="110" r="2.5" fill="#2a2c2e"/><circle cx="162" cy="110" r="14" fill="#25282b"/><circle cx="162" cy="110" r="12.3" fill="none" stroke="#474c51" stroke-width="2.8" stroke-dasharray="2.6 2.4"/><circle cx="162" cy="110" r="7.8" fill="#3a3d40"/><circle cx="162" cy="110" r="7.8" fill="none" stroke="#000" stroke-opacity=".18" stroke-width="1.5"/><circle cx="162" cy="110" r="2.5" fill="#2a2c2e"/></symbol><symbol id="eq-compact-utility" viewBox="0 0 240 140"><rect x="72" y="108" width="84" height="16" rx="8" fill="#25282b"/><rect x="75" y="111" width="78" height="10" rx="5" fill="#3b3f43"/><line x1="80" y1="122.6" x2="148" y2="122.6" stroke="#4a4f54" stroke-width="2.6" stroke-dasharray="3 3"/><circle cx="80.0" cy="116" r="4" fill="#5d6268"/><circle cx="80.0" cy="116" r="2" fill="#25282b"/><circle cx="102.7" cy="116" r="1.5" fill="#5d6268"/><circle cx="102.7" cy="116" r="2" fill="#25282b"/><circle cx="125.3" cy="116" r="1.5" fill="#5d6268"/><circle cx="125.3" cy="116" r="2" fill="#25282b"/><circle cx="148.0" cy="116" r="4" fill="#5d6268"/><circle cx="148.0" cy="116" r="2" fill="#25282b"/><path d="M80 110V79Q80 74 85 74H150Q156 74 156 80V110Z" fill="#f07a1a"/><rect x="88" y="82" width="22" height="14" rx="2" fill="#2a2c2e" opacity=".3"/><rect x="154" y="104" width="27" height="6" rx="1" fill="#2a2c2e"/><path d="M146 76V49Q146 45 150 45H160V76Z" fill="#2a2c2e"/><path d="M151 46L168 40" stroke="#25282b" stroke-width="3.5" stroke-linecap="round"/><path d="M130 90L110 62" stroke="#c9ced3" stroke-width="3" stroke-linecap="round"/><path d="M150 60L112 52L66 88" fill="none" stroke="#f07a1a" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M36 88H68V118L36 121Q31 104 36 88Z" fill="#5b6167"/><rect x="34" y="118" width="34" height="3" fill="#2a2c2e"/></symbol></svg>
+<div class="hazard"></div>
+<div class="topbar"><div class="wrap"><span>1855 E Greg St, Sparks, NV 89431</span><span>Hours: Mon-Fri 7-5 &nbsp;|&nbsp; Call <a href="#">(775) 555-0187</a></span></div></div>
+<header class="masthead"><div class="wrap">
+<a class="logo" href="#"><svg viewBox="0 0 64 64" width="62" height="62" aria-hidden="true"><path d="M32 2L59 17.5V46.5L32 62L5 46.5V17.5Z" fill="#f47b20"/><path d="M32 7L54.5 20V44L32 57L9.5 44V20Z" fill="none" stroke="#1d1d1d" stroke-width="2"/><path d="M19 17H45V25H36.5V39H45V47H19V39H27.5V25H19Z" fill="#1d1d1d"/></svg><span class="brandtext"><span class="brand">Ironline Equipment Co.</span><span class="tagline">Heavy iron for the high desert</span></span></a>
+<div class="contact"><span class="phone">(775) 555-0187</span><br>1855 E Greg St, Sparks, NV 89431<br>Mon-Fri 7-5</div>
+</div></header>
+<nav class="mainnav"><ul><li><a href="#">Home</a></li><li><a href="#" class="active">New Equipment</a></li><li><a href="#">Used</a></li><li><a href="#">Parts</a></li><li><a href="#">Service</a></li><li><a href="#">Financing</a></li><li><a href="#">Contact</a></li></ul></nav>
+<div class="promo"><b>FINANCING AVAILABLE O.A.C.</b> &nbsp;|&nbsp; TRADES WELCOME &nbsp;|&nbsp; WE BUY USED IRON &nbsp;|&nbsp; DELIVERY ACROSS NORTHERN NEVADA</div>
+<main class="wrap">
+<div class="crumbs"><a href="#">Home</a> &rsaquo; <a href="#">Inventory</a> &rsaquo; All Equipment</div>
+<h1>Equipment Inventory (15 units)</h1>
+<p class="intro">New and used construction equipment in stock and ready to work. Every used machine goes through our 120-point shop inspection. Call our sales desk for availability, freight and attachment packages.</p>
+<form class="filters" action="#" method="get">
+<label>Category<select name="category"><option>All Categories</option><option>Backhoe Loader</option><option>Excavator</option><option>Mini Excavator</option><option>Skid Steer Loader</option><option>Compact Track Loader</option><option>Wheel Loader</option></select></label>
+<label>Make<select name="make"><option>All Makes</option><option>Bobcat</option><option>Case</option><option>Caterpillar</option><option>Hyundai</option><option>JCB</option><option>John Deere</option><option>Komatsu</option><option>Kubota</option><option>Volvo</option></select></label>
+<label>Condition<select name="condition"><option>Any</option><option>New</option><option>Used</option></select></label>
+<label class="grow">Search<input type="search" name="q" placeholder="Keyword, model or stock #"></label>
+<button type="button">Search</button>
+</form>
+<div class="layout"><div><div class="resultbar"><span>15 units found</span><span>Sort by: <b>Featured</b></span></div>
+<section class="grid" aria-label="Inventory">
+<article class="unit" id="unit-B4GG20194" data-serial="B4GG20194" data-status="AVAILABLE" data-year="2024" data-make="Bobcat" data-model="S76" data-price="69600">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Bobcat S76"><use href="#gnd"/><use href="#eq-skid-steer"/></svg><span class="tag">New</span><span class="stock">Stock #IL-9811</span></div>
+<div class="info"><h3 class="title">2024 Bobcat S76</h3><div class="cat">Skid Steer Loader</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">B4GG20194</span></li><li>Hours: 7</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$69,600</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-CAT0926MCLWB00938" data-serial="CAT0926MCLWB00938" data-status="AVAILABLE" data-year="2023" data-make="Caterpillar" data-model="926M" data-price="222000">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 Caterpillar 926M"><use href="#gnd"/><use href="#eq-wheel-loader"/></svg><span class="tag">New</span><span class="stock">Stock #IL-8619</span></div>
+<div class="info"><h3 class="title">2023 Caterpillar 926M</h3><div class="cat">Wheel Loader</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">CAT0926MCLWB00938</span></li><li>Hours: 11</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$222,000</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-KMTPC210V55A39014" data-serial="KMTPC210V55A39014" data-status="AVAILABLE" data-year="2023" data-make="Komatsu" data-model="PC210LC-11" data-price="252100">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 Komatsu PC210LC-11"><use href="#gnd"/><use href="#eq-excavator"/></svg><span class="tag">New</span><span class="stock">Stock #IL-3851</span></div>
+<div class="info"><h3 class="title">2023 Komatsu PC210LC-11</h3><div class="cat">Excavator</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">KMTPC210V55A39014</span></li><li>Hours: 43</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$252,100</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-1T0310SLAPF417726" data-serial="1T0310SLAPF417726" data-status="SALE_PENDING" data-year="2023" data-make="John Deere" data-model="310SL" data-price="137600">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 John Deere 310SL"><use href="#gnd"/><use href="#eq-backhoe"/></svg><span class="tag">New</span><span class="stock">Stock #IL-5129</span><span class="pending-badge">SALE PENDING</span></div>
+<div class="info"><h3 class="title">2023 John Deere 310SL</h3><div class="cat">Backhoe Loader</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">1T0310SLAPF417726</span></li><li>Hours: 9</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="pending-note">Sale pending &mdash; backup offers welcome</div><div class="price">$137,600</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-1DW644KXCGF662190" data-serial="1DW644KXCGF662190" data-status="AVAILABLE" data-year="2016" data-make="John Deere" data-model="644K" data-price="118000">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2016 John Deere 644K"><use href="#gnd"/><use href="#eq-wheel-loader"/></svg><span class="tag">Used</span><span class="stock">Stock #IL-6898</span></div>
+<div class="info"><h3 class="title">2016 John Deere 644K</h3><div class="cat">Wheel Loader</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">1DW644KXCGF662190</span></li><li>Hours: 9840</li><li>Condition: Used</li></ul>
+<div class="pricebox"><div class="price">$118,000</div><div class="finance-note">Call for quote &amp; trade-in value</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-KBSVL752C40871" data-serial="KBSVL752C40871" data-status="AVAILABLE" data-year="2024" data-make="Kubota" data-model="SVL75-2" data-price="73700">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Kubota SVL75-2"><use href="#gnd"/><use href="#eq-track-loader"/></svg><span class="tag">New</span><span class="stock">Stock #IL-3216</span></div>
+<div class="info"><h3 class="title">2024 Kubota SVL75-2</h3><div class="cat">Compact Track Loader</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">KBSVL752C40871</span></li><li>Hours: 10</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$73,700</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-B4H213560" data-serial="B4H213560" data-status="AVAILABLE" data-year="2024" data-make="Bobcat" data-model="E35" data-price="63400">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Bobcat E35"><use href="#gnd"/><use href="#eq-mini-excavator"/></svg><span class="tag">New</span><span class="stock">Stock #IL-2114</span></div>
+<div class="info"><h3 class="title">2024 Bobcat E35</h3><div class="cat">Mini Excavator</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">B4H213560</span></li><li>Hours: 28</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$63,400</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-VCEC220EV00360144" data-serial="VCEC220EV00360144" data-status="AVAILABLE" data-year="2023" data-make="Volvo" data-model="EC220E" data-price="245800">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 Volvo EC220E"><use href="#gnd"/><use href="#eq-excavator"/></svg><span class="tag">New</span><span class="stock">Stock #IL-2239</span></div>
+<div class="info"><h3 class="title">2023 Volvo EC220E</h3><div class="cat">Excavator</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">VCEC220EV00360144</span></li><li>Hours: 28</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$245,800</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-CAT0320GCZBK01277" data-serial="CAT0320GCZBK01277" data-status="AVAILABLE" data-year="2023" data-make="Caterpillar" data-model="320 GC" data-price="245900">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 Caterpillar 320 GC"><use href="#gnd"/><use href="#eq-excavator"/></svg><span class="tag">New</span><span class="stock">Stock #IL-9160</span></div>
+<div class="info"><h3 class="title">2023 Caterpillar 320 GC</h3><div class="cat">Excavator</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">CAT0320GCZBK01277</span></li><li>Hours: 48</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$245,900</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-CAT259D3FTL20581" data-serial="CAT259D3FTL20581" data-status="AVAILABLE" data-year="2024" data-make="Caterpillar" data-model="259D3" data-price="77700">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Caterpillar 259D3"><use href="#gnd"/><use href="#eq-track-loader"/></svg><span class="tag">New</span><span class="stock">Stock #IL-7788</span></div>
+<div class="info"><h3 class="title">2024 Caterpillar 259D3</h3><div class="cat">Compact Track Loader</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">CAT259D3FTL20581</span></li><li>Hours: 12</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$77,700</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-B4SK18832" data-serial="B4SK18832" data-status="SOLD" data-year="2024" data-make="Bobcat" data-model="T66" data-price="">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Bobcat T66"><use href="#gnd"/><use href="#eq-track-loader"/></svg><span class="tag">New</span><span class="stock">Stock #IL-5041</span><div class="sold-ribbon" aria-label="Sold">SOLD</div></div>
+<div class="info"><h3 class="title">2024 Bobcat T66</h3><div class="cat">Compact Track Loader</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">B4SK18832</span></li><li>Hours: 32</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price sold">SOLD</div><div class="finance-note">This unit has been sold. Call us for similar units.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-HHKHX220LN0002563" data-serial="HHKHX220LN0002563" data-status="AVAILABLE" data-year="2023" data-make="Hyundai" data-model="HX220L" data-price="202400">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2023 Hyundai HX220L"><use href="#gnd"/><use href="#eq-excavator"/></svg><span class="tag">New</span><span class="stock">Stock #IL-3070</span></div>
+<div class="info"><h3 class="title">2023 Hyundai HX220L</h3><div class="cat">Excavator</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">HHKHX220LN0002563</span></li><li>Hours: 29</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$202,400</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-JCB3CX14C03121987" data-serial="JCB3CX14C03121987" data-status="AVAILABLE" data-year="2024" data-make="JCB" data-model="3CX" data-price="129500">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 JCB 3CX"><use href="#gnd"/><use href="#eq-backhoe"/></svg><span class="tag">New</span><span class="stock">Stock #IL-6085</span></div>
+<div class="info"><h3 class="title">2024 JCB 3CX</h3><div class="cat">Backhoe Loader</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">JCB3CX14C03121987</span></li><li>Hours: 43</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$129,500</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-CAT0308CRFJX00512" data-serial="CAT0308CRFJX00512" data-status="AVAILABLE" data-year="2019" data-make="Caterpillar" data-model="308 CR" data-price="74500">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2019 Caterpillar 308 CR"><use href="#gnd"/><use href="#eq-mini-excavator"/></svg><span class="tag">Used</span><span class="stock">Stock #IL-1587</span></div>
+<div class="info"><h3 class="title">2019 Caterpillar 308 CR</h3><div class="cat">Mini Excavator</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">CAT0308CRFJX00512</span></li><li>Hours: 3120</li><li>Condition: Used</li></ul>
+<div class="pricebox"><div class="price">$74,500</div><div class="finance-note">Call for quote &amp; trade-in value</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+<article class="unit" id="unit-JJGN580SNRC786120" data-serial="JJGN580SNRC786120" data-status="AVAILABLE" data-year="2024" data-make="Case" data-model="580SN" data-price="134800">
+<div class="ph"><svg class="eq" viewBox="0 0 240 140" role="img" aria-label="2024 Case 580SN"><use href="#gnd"/><use href="#eq-backhoe"/></svg><span class="tag">New</span><span class="stock">Stock #IL-7917</span></div>
+<div class="info"><h3 class="title">2024 Case 580SN</h3><div class="cat">Backhoe Loader</div>
+<ul class="specs"><li>Serial/PIN: <span class="serial">JJGN580SNRC786120</span></li><li>Hours: 49</li><li>Condition: New</li></ul>
+<div class="pricebox"><div class="price">$134,800</div><div class="finance-note">Financing available O.A.C.</div><div class="actions"><a class="btn" href="#">Call for Quote</a><a class="btn alt" href="#">Details</a></div></div></div>
+</article>
+</section></div><aside class="side">
+  <div class="box"><h3>Why Ironline?</h3><ul><li>Family owned since 1994</li><li>Factory-trained technicians</li><li>Field service trucks</li><li>Parts counter open 6 days</li></ul></div>
+  <div class="box dark"><h3>Need Financing?</h3><p>Competitive rates for contractors. Fast credit decisions, 0 down O.A.C.</p><a class="btn" href="#">Apply Online</a></div>
+  <div class="box"><h3>Sell Your Iron</h3><p>We pay cash for clean late-model excavators, loaders and backhoes.</p><a class="btn alt" href="#">Get an Offer</a></div>
+</aside></div>
+<div class="cta"><b>Financing available.</b> Flexible terms for farms, contractors and small businesses &mdash; call (775) 555-0187 or stop by 1855 E Greg St, Sparks, NV 89431.</div>
+</main>
+<footer><div class="wrap">
+<div class="cols">
+<div><h4>Ironline Equipment Co.</h4><p>1855 E Greg St, Sparks, NV 89431</p><p>Phone: (775) 555-0187</p></div>
+<div><h4>Store Hours</h4><p>Mon-Fri 7-5</p><p>Closed Sundays &amp; major holidays</p></div>
+<div><h4>Departments</h4><p>Sales &middot; Parts &middot; Service &middot; Financing</p><p>All prices USD, FOB Sparks NV. Prices, specifications and availability subject to change without notice. Equipment subject to prior sale.</p></div>
+</div>
+<div class="legal"><span>&copy; 2026 Ironline Equipment Co.. All rights reserved.</span><span>1855 E Greg St, Sparks, NV 89431</span></div>
+</div></footer>
+</body>
+</html>

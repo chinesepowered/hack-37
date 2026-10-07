@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FloorCheck · Floor-plan audit</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233D5AFE'/%3E%3Cpath d='M9 15.5l4.2 4.2L23 10' stroke='white' stroke-width='3.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Crect x='8' y='23.5' width='16' height='2.6' rx='1.3' fill='white' opacity='.85'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body data-run-state="idle">
+  <header class="topbar">
+    <div class="brand">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#3D5AFE"/><path d="M9 15.5l4.2 4.2L23 10" stroke="#fff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="8" y="23.5" width="16" height="2.6" rx="1.3" fill="#fff" opacity=".85"/></svg>
+      <span class="brand-name">FloorCheck</span>
+    </div>
+    <div class="divider"></div>
+    <div class="facility">
+      <div class="facility-name" id="lender-name">Cobalt Credit Partners</div>
+      <div class="facility-sub" id="facility-name">Equipment floor plan facility</div>
+    </div>
+    <div class="spacer"></div>
+    <div class="mode-chip" id="mode-chip"><span class="dot"></span><span id="mode-text">Connecting…</span></div>
+    <button class="btn ghost" id="btn-schedule"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="schedule-text">Audit nightly</span></button>
+    <button class="btn primary" id="run-audit"><svg viewBox="0 0 24 24"><path d="M7 5l11 7-11 7z"/></svg><span id="run-text">Run floor check</span></button>
+  </header>
+
+  <section class="kpis">
+    <div class="kpi" id="kpi-exposure">
+      <div class="kpi-label">Financed exposure</div>
+      <div class="kpi-value" data-kpi="exposure">—</div>
+      <div class="kpi-sub" id="kpi-exposure-sub">— units · — dealers</div>
+    </div>
+    <div class="kpi" id="kpi-verified">
+      <div class="kpi-label">Verified on the lot</div>
+      <div class="kpi-value" data-kpi="verified">—</div>
+      <div class="kpi-bar"><span id="verified-bar"></span></div>
+      <div class="kpi-sub" id="kpi-verified-sub">Awaiting audit</div>
+    </div>
+    <div class="kpi danger" id="kpi-soot">
+      <div class="kpi-label">Sold out of trust</div>
+      <div class="kpi-value" data-kpi="soot">—</div>
+      <div class="kpi-sub" id="kpi-soot-sub">Sold, advance unpaid</div>
+    </div>
+    <div class="kpi warn" id="kpi-notfound">
+      <div class="kpi-label">Not found</div>
+      <div class="kpi-value" data-kpi="notfound">—</div>
+      <div class="kpi-sub" id="kpi-notfound-sub">Missing from dealer sites</div>
+    </div>
+    <div class="kpi" id="kpi-coverage">
+      <div class="kpi-label">Collateral coverage</div>
+      <div class="kpi-value" data-kpi="coverage">—</div>
+      <div class="kpi-sub" id="kpi-coverage-sub">Market value vs advances</div>
+    </div>
+    <div class="kpi" id="kpi-run">
+      <div class="kpi-label">This audit</div>
+      <div class="kpi-value" data-kpi="time">—</div>
+      <div class="kpi-sub" id="kpi-run-sub">Agent time · cost</div>
+    </div>
+  </section>
+
+  <main class="grid">
+    <aside class="panel dealers-panel">
+      <div class="panel-head"><h2>Dealers</h2><span class="muted" id="dealer-count"></span></div>
+      <div class="dealer-list" id="dealer-list"></div>
+    </aside>
+
+    <section class="panel center-panel">
+      <div class="tabs">
+        <button class="tab active" id="tab-activity" data-tab="activity">Agent activity</button>
+        <button class="tab" id="tab-ledger" data-tab="ledger">Ledger <span class="count" id="ledger-count"></span></button>
+        <button class="tab" id="tab-history" data-tab="history">History</button>
+      </div>
+      <div class="tab-body" data-body="activity">
+        <div class="agent-card" id="agent-card">
+          <div class="agent-avatar"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="agent-meta">
+            <div class="agent-title">Auditor agent <span class="agent-pill" id="agent-state">idle</span></div>
+            <div class="agent-sub" id="agent-sub">Agent37 Cloud · Hermes · its own computer and browser</div>
+          </div>
+          <div class="agent-stats">
+            <div><span id="agent-elapsed">0:00</span><label>elapsed</label></div>
+            <div><span id="agent-tools">0</span><label>tool calls</label></div>
+          </div>
+        </div>
+        <div class="timeline" id="timeline">
+          <div class="empty" id="timeline-empty">
+            <div class="empty-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+            <div class="empty-title">Ready to walk every lot</div>
+            <div class="empty-text">FloorCheck dispatches an always-on agent on Agent37 to read each dealer's public inventory, then matches every financed serial number against what it finds.</div>
+          </div>
+        </div>
+        <div class="thinking" id="thinking" hidden><span class="pulse"></span><span id="thinking-text"></span></div>
+      </div>
+      <div class="tab-body" data-body="ledger" hidden>
+        <div class="table-wrap">
+          <table class="ledger" id="ledger">
+            <thead><tr><th>Unit</th><th>Dealer</th><th>Equipment</th><th>Serial / PIN</th><th class="num">Advance</th><th class="num">Market</th><th class="num">LTV</th><th>Status</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-body" data-body="history" hidden>
+        <div class="history" id="history"></div>
+      </div>
+    </section>
+
+    <aside class="panel findings-panel">
+      <div class="panel-head"><h2>Exceptions</h2><span class="muted" id="findings-count"></span></div>
+      <div class="findings" id="findings-list">
+        <div class="empty small" id="findings-empty"><div class="empty-text">Nothing flagged yet. Exceptions appear here the moment the agent's listings are matched.</div></div>
+      </div>
+      <div class="actions" id="actions">
+        <button class="btn secondary" id="btn-memo" disabled><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>Credit memo</button>
+        <button class="btn danger-soft" id="btn-demands" disabled><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg><span id="demands-text">Payoff demands</span></button>
+      </div>
+    </aside>
+  </main>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <div>
+        <div class="sev" id="drawer-sev"></div>
+        <h3 id="drawer-title"></h3>
+        <div class="drawer-sub" id="drawer-sub"></div>
+      </div>
+      <button class="icon-btn" id="drawer-close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <div class="drawer-body" id="drawer-body"></div>
+  </aside>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-card">
+      <div class="modal-head"><h3 id="modal-title"></h3><div class="modal-tools"><span class="model-chip" id="modal-model"></span><button class="btn ghost small" id="modal-copy">Copy</button><button class="icon-btn" id="modal-close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></div>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
